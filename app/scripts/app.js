@@ -15,7 +15,8 @@ angular
     'ngMessages',
     'ngResource',
     'ngRoute',
-    'ngFabForm'
+    'ngFabForm',
+    'ngWebsocket'
   ])
   .config(function ($routeProvider) {
     $routeProvider
