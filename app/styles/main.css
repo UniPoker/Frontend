@@ -1,83 +1,119 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
-body {
-  padding: 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
+.validation-success {
+  opacity: 1;
+  display: block;
+  position: absolute;
+  right: -7.2px;
+  bottom: -7.2px;
+  font-size: 28.8px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  border-radius: 36px;
+  color: #62b14c;
+  transition: all ease-out 0.32s;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+.validation-success:after {
+  display: block;
+  content: '\e013';
+  font-family: 'Glyphicons Halflings';
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+.validation-success.ng-hide {
+  transition-delay: 0s;
+  transition: all ease-out 0.12s;
+  opacity: 0;
+  transform: rotate(360deg);
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.ng-hide-remove li {
+  opacity: 0;
+}
+
+.validation {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  font-size: 14px;
+  overflow: visible;
+  background: #c00640;
+}
+
+.validation ul {
+  display: block;
+  overflow: hidden;
+}
+
+.validation li {
+  display: block;
+  line-height: 1;
+  background: #c00640;
+  position: absolute;
+  right: -4px;
+  top: -10px;
+  text-align: center;
+  font-weight: bold;
+  padding: 2px 10px;
+  color: #fff;
+  transform: rotate(0deg);
+  transition: all ease-out 0.2s;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.validation li.ng-enter {
+  opacity: 0;
+  transform: rotate(20deg);
+  right: -20px;
+}
+
+.validation li.ng-leave {
+  transition: all ease-in 0s;
+  opacity: 0;
+  outline: 30px solid red;
+}
+
+*:focus + .validation li {
+  background-color: #63bff8 !important;
+}
+
+input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {
+  border-color: #c00640;
+}
+
+input:focus, input:focus.ng-touched.ng-invalid:not(.ng-valid), textarea:focus, textarea:focus.ng-touched.ng-invalid:not(.ng-valid), select:focus, select:focus.ng-touched.ng-invalid:not(.ng-valid) {
+  border-color: #63bff8;
+}
+
+input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {
+  border-color: #62b14c;
+}
+
+form[class*="ng-invalid"] button.btn {
+  background: #63bff8;
+  transition: none;
+}
+
+form button.btn {
+  transition: all ease-in 0.5s;
+  background: #62b14c;
+}
+
+.text_center {
+  text-align:center;
+}
+
+.standard_button {
+  padding: 5px 30px;
+  border: 1px solid #006600;
+  border-radius: 10px;
+  background-color: #006600;
+  color: #ffffff;
+}
+
+.standard_button:hover{
+  background-color: #ffffff;
+  color: #006600;
 }
