@@ -9,17 +9,45 @@
 
 module.exports = function (grunt) {
 
+  var util = require('util');
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  var os = require('os');
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
+
+  var ip_address;
+  var ifaces = os.networkInterfaces();
+  Object.keys(ifaces).forEach(function (ifname) {
+    var alias = 0
+      ;
+
+    ifaces[ifname].forEach(function (iface) {
+      if ('IPv4' !== iface.family || iface.internal !== false) {
+        // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+        return;
+      }
+
+      if (alias >= 1) {
+        // this single interface has multiple ipv4 addresses
+        console.log(ifname + ':' + alias, iface.address);
+        ip_address = iface.address;
+      } else {
+        // this interface has only one ipv4 adress
+        console.log(ifname, iface.address);
+        ip_address = iface.address;
+      }
+    });
+  });
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -68,7 +96,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '192.168.0.139',
+        hostname: ip_address,
         livereload: 35729
       },
       livereload: {
@@ -403,6 +431,7 @@ module.exports = function (grunt) {
       'connect:livereload',
       'watch'
     ]);
+    grunt.log.warn('The server ist running at: ' + grunt.config.get(['connect']).options.hostname + ':' + grunt.config.get(['connect']).options.port);
   });
 
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
