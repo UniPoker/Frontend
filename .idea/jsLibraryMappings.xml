@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{poker_frontend node_modules}" />
+    <file url="file://$PROJECT_DIR$" libraries="{Frontend node_modules, poker_frontend node_modules}" />
+    <file url="PROJECT" libraries="{Node.js v0.12.4 Core Modules}" />
   </component>
 </project>
