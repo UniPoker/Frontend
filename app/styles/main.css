@@ -102,7 +102,7 @@ form button.btn {
 }
 
 .text_center {
-  text-align:center;
+  text-align: center;
 }
 
 .standard_button {
@@ -113,8 +113,19 @@ form button.btn {
   color: #ffffff;
 }
 
-.standard_button:hover{
+.standard_button:hover {
   background-color: #ffffff;
   color: #006600;
 }
 
+.success {
+  background-color: rgba(0, 102, 0, 0.5);
+}
+
+.error {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.json_value {
+  margin-top: 5px;
+}

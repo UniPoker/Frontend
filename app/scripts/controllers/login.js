@@ -11,7 +11,7 @@ angular.module('pokerFrontendApp')
   .controller('LoginCtrl', function ($scope, ngFabForm, rest, $location) {
 
     var webSocket = new WebSocket(
-      'ws://192.168.0.139:8080/poker/websocket');
+      'ws://192.168.0.139:8080/events/');//poker/websocket');
 
 
     $scope.submit = function () {

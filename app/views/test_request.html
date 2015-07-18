@@ -1,2 +1,23 @@
 <p>This is the test_request view.</p>
-<button ng-click="sendSocket()">send</button>
+<button ng-click="sendSocket('testidi')">testidi</button>
+<button ng-click='sendSocket("{\"body\":{\"user\":\"123456789\"}, \"event\" : \"login_user\"}")'>login</button>
+<br><br>
+
+<div class="json_value">
+  <button ng-click="add_json_value()">paar anfügen</button>
+  <button ng-click="set_login_json()">set to login</button>
+  <button ng-click="send_json()">senden</button>
+</div>
+
+<div ng-repeat="value in json_values">
+  <input class="json_value" ng-model="value[0]"/>
+  <input ng-model="value[1]"/>
+  <button ng-click="remove_json_value($index)">X</button>
+</div>
+
+
+<div ng-repeat="message in messages">
+  <!--{{message}}-->
+  <div ng-class="{success: message.status, error: !message.status}">Erfolgreich</div>
+  <div ng-if="message.message" style="margin-left: 50px;">erhaltene Antwort: {{message.message}}</div>
+</div>
