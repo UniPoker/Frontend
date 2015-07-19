@@ -10,6 +10,7 @@
 module.exports = function (grunt) {
 
   var util = require('util');
+  var modRewrite = require('connect-modrewrite');
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -104,6 +105,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
