@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
-  var ip_address;
+  var ip_address = 'IP_ADDRESS';
   var ifaces = os.networkInterfaces();
   Object.keys(ifaces).forEach(function (ifname) {
     var alias = 0
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          map: true,
+          map: true
         },
         files: [{
           expand: true,
@@ -431,7 +431,7 @@ module.exports = function (grunt) {
       'connect:livereload',
       'watch'
     ]);
-    grunt.log.warn('The server ist running at: ' + grunt.config.get(['connect']).options.hostname + ':' + grunt.config.get(['connect']).options.port);
+    grunt.log.warn('The server is running at: ' + grunt.config.get(['connect']).options.hostname + ':' + grunt.config.get(['connect']).options.port);
   });
 
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
