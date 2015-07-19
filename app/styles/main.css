@@ -126,6 +126,15 @@ form button.btn {
   background-color: rgba(255, 0, 0, 0.5);
 }
 
-.json_value {
+.json_value, .margin_top {
   margin-top: 5px;
+}
+
+.nav_bar_element {
+  border: 1px solid;
+  text-align: center;
+}
+
+.nav_bar_element_active {
+  background-color: #006600;
 }

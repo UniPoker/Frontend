@@ -7,12 +7,13 @@
  * # navBar
  */
 angular.module('pokerFrontendApp')
-  .directive('navBar', function () {
+  .directive('navBar', function (routeNavigation) {
     return {
-      template: '<div></div>',
+      templateUrl: '../views/nav_bar.html',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the navBar directive');
+      controller: function ($scope) {
+        $scope.routes = routeNavigation.routes;
+        $scope.activeRoute = routeNavigation.activeRoute;
       }
     };
   });
