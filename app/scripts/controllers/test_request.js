@@ -8,7 +8,7 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('TestRequestCtrl', function ($scope, $rootScope, socket) {
+  .controller('TestRequestCtrl', function ($scope, $rootScope, socket, user) {
 
     $scope.status_classes = {
       //css classes
@@ -62,6 +62,7 @@ angular.module('pokerFrontendApp')
 
     $scope.$on("login_user_response", function (event, data) {
       console.log("login_user_response: ", data);
+      user.is_logged_in = socket.is_succesfull_response(data);
     });
 
     $scope.$on("error_response", function (event, data) {

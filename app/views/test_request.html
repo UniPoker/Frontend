@@ -7,7 +7,6 @@
         <button ng-click="set_login_json()">set to login</button>
         <button ng-click="send_json()">senden</button>
         <span>Socket Status: </span><i class="fa fa-circle" ng-class="status_classes[status]"></i>
-        <button ng-click="">reload</button>
       </div>
     </div>
     <br>
@@ -54,10 +53,7 @@
         <hr style="margin-bottom: 5px; margin-top: 5px;">
         <strong>{{message.event}}:</strong>
         <span>{{message.message}}</span>
-
-        {{message}}
-        <!--<div ng-class="{success: message.status, error: !message.status}">Erfolgreich</div>-->
-        <!--<div ng-if="message.message" style="margin-left: 50px;">erhaltene Antwort: {{message.message}}</div>-->
+        <span>{{message.body}}</span>
       </div>
     </div>
   </div>

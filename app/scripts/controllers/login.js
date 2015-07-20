@@ -16,16 +16,19 @@ angular.module('pokerFrontendApp')
     };
 
     $scope.submit = function () {
-      console.log("submit");
       var user = $scope.formData.username;
       var pw = $scope.formData.password;
-      socket.send(JSON.stringify({"body": {"user": user, "password": pw}, "event": "login_user"}));
+      socket.send(socket.create_json_string({"user": user, "password": pw}, "login_user"));
+    };
+
+    $scope.register_user = function (pw, username) {
+      socket.send(socket.create_json_string({"password": pw, "name": username}, "register_user"));
     };
 
     $scope.defaultFormOptions = ngFabForm.config;
 
     $scope.$on("login_user_response", function (event, data) {
-      if (is_succesfull_response(data)) {
+      if (socket.is_succesfull_response(data)) {
         user.name = $scope.formData.username;
         user.is_logged_in = true;
         $location.path("/main");
@@ -34,19 +37,11 @@ angular.module('pokerFrontendApp')
       }
     });
 
-    var is_succesfull_response = function (data) {
-      if (data.status == 0) {
-        return true;
-      } else {
-        return false;
+    $scope.$on("register_user_response", function(event, data){
+      if(socket.is_succesfull_response(data)){
+        $scope.submit();
+      }else{
+        alertify.error("Nutzer konnte nicht angelegt werden");
       }
-    };
-
-    //function onMessage(event) {
-    //  console.log(event);
-    //  var data = JSON.parse(event.data);
-    //  if(data.status){
-    //    $location.path("/main")
-    //  }
-    //}
+    });
   });

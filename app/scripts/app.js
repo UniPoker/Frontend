@@ -49,17 +49,17 @@ angular
         name: 'Login',
         requireLogin: false
       })
-      .when('/test_request', {
-        templateUrl: 'views/test_request.html',
-        controller: 'TestRequestCtrl',
-        name: 'TestRequest',
-        requireLogin: false
-      })
       .when('/logout', {
         templateUrl: 'views/logout.html',
         controller: 'LogoutCtrl',
         name: 'Logout',
         requireLogin: true
+      })
+      .when('/test_request', {
+        templateUrl: 'views/test_request.html',
+        controller: 'TestRequestCtrl',
+        name: 'TestRequest',
+        requireLogin: false
       })
       .otherwise({
         redirectTo: '/login'

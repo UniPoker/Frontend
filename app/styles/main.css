@@ -96,22 +96,22 @@ form[class*="ng-invalid"] button.btn {
   transition: none;
 }
 
-form button.btn {
-  transition: all ease-in 0.5s;
-  background: #62b14c;
-}
+/*form button.btn {*/
+  /*transition: all ease-in 0.5s;*/
+  /*background: #62b14c;*/
+/*}*/
 
 .text_center {
   text-align: center;
 }
 
-.standard_button {
-  padding: 5px 30px;
-  border: 1px solid #006600;
-  border-radius: 10px;
-  background-color: #006600;
-  color: #ffffff;
-}
+/*.standard_button {*/
+  /*padding: 5px 30px;*/
+  /*border: 1px solid #006600;*/
+  /*border-radius: 10px;*/
+  /*background-color: #006600;*/
+  /*color: #ffffff;*/
+/*}*/
 
 .standard_button:hover {
   background-color: #ffffff;
@@ -149,4 +149,8 @@ form button.btn {
 
 .socket_pending {
   color: #ffc520;
+}
+
+a {
+  cursor: pointer;
 }
