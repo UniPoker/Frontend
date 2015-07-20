@@ -8,47 +8,45 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('LoginCtrl', function ($scope, ngFabForm, rest, $location) {
+  .controller('LoginCtrl', function ($scope, $rootScope, ngFabForm, $location, socket, user) {
 
-    var webSocket = new WebSocket(
-      'ws://192.168.0.139:8080/events/');//poker/websocket');
-
+    $scope.formData = {
+      username: 'mustermann',
+      password: '123456'
+    };
 
     $scope.submit = function () {
-            console.log("submit");
-      webSocket.send(JSON.stringify({"body":{"user":"123456789"}, "event" : "login_user"}));
-
-
+      console.log("submit");
+      var user = $scope.formData.username;
+      var pw = $scope.formData.password;
+      socket.send(JSON.stringify({"body": {"user": user, "password": pw}, "event": "login_user"}));
     };
+
     $scope.defaultFormOptions = ngFabForm.config;
 
-    webSocket.onerror = function (event) {
-      onError(event)
-    };
-
-    webSocket.onopen = function (event) {
-      onOpen(event)
-    };
-
-    webSocket.onmessage = function (event) {
-      onMessage(event)
-    };
-
-    function onMessage(event) {
-      console.log(event);
-      var data = JSON.parse(event.data);
-      if(data.status){
-        $location.path("/main")
+    $scope.$on("login_user_response", function (event, data) {
+      if (is_succesfull_response(data)) {
+        user.name = $scope.formData.username;
+        user.is_logged_in = true;
+        $location.path("/main");
+      } else {
+        alertify.error("Login nicht erfolgreich");
       }
-    }
+    });
 
-    function onOpen(event) {
-      console.log("onOpen", event);
-    }
+    var is_succesfull_response = function (data) {
+      if (data.status == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    };
 
-    function onError(event) {
-      console.log("onError",event);
-    }
-
-
+    //function onMessage(event) {
+    //  console.log(event);
+    //  var data = JSON.parse(event.data);
+    //  if(data.status){
+    //    $location.path("/main")
+    //  }
+    //}
   });

@@ -16,30 +16,50 @@ angular
     'ngResource',
     'ngRoute',
     'ngFabForm',
-'ngWebsocket'
-])
-.config(function ($routeProvider, $locationProvider) {
+    'ngWebsocket'
+  ])
+  .run(function ($rootScope, $location, user) {
+    $rootScope.$on('$routeChangeStart', function(event, next){
+      if(next.requireLogin !== undefined){
+        if(next.requireLogin && !user.is_logged_in){
+          event.preventDefault();
+          $location.path("/login");
+        }
+      }
+    });
+  })
+  .config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
       .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        name: 'Main'
+        name: 'Main',
+        requireLogin: true
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        name: 'About'
+        name: 'About',
+        requireLogin: true
       })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        name: 'Login'
+        name: 'Login',
+        requireLogin: false
       })
       .when('/test_request', {
         templateUrl: 'views/test_request.html',
         controller: 'TestRequestCtrl',
-        name: 'TestRequest'
+        name: 'TestRequest',
+        requireLogin: false
+      })
+      .when('/logout', {
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
+        name: 'Logout',
+        requireLogin: true
       })
       .otherwise({
         redirectTo: '/login'

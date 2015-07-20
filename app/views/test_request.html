@@ -1,23 +1,64 @@
-<p>This is the test_request view.</p>
-<button ng-click="sendSocket('testidi')">testidi</button>
-<button ng-click='sendSocket("{\"body\":{\"user\":\"123456789\"}, \"event\" : \"login_user\"}")'>login</button>
-<br><br>
+<!-- create json part -->
+<div class="col-lg-6">
+  <div class="row">
+    <div class="json_value col-lg-12">
+      <div class="row">
+        <button ng-click="add_json_value()">paar anfügen</button>
+        <button ng-click="set_login_json()">set to login</button>
+        <button ng-click="send_json()">senden</button>
+        <span>Socket Status: </span><i class="fa fa-circle" ng-class="status_classes[status]"></i>
+        <button ng-click="">reload</button>
+      </div>
+    </div>
+    <br>
 
-<div class="json_value">
-  <button ng-click="add_json_value()">paar anfügen</button>
-  <button ng-click="set_login_json()">set to login</button>
-  <button ng-click="send_json()">senden</button>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="json_value">
+            <span class="col-lg-2" style="margin-top: 3px;">Event: </span>
+
+            <div class="col-lg-10">
+              <input ng-model="json_event">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div ng-repeat="value in json_values" class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-2" ng-if="$index != 0"></div>
+              <div style="margin-top: 8px;" class="col-lg-2" ng-if="$index == 0">Body:</div>
+              <div class="col-lg-10">
+                <input class="json_value" ng-model="value[0]"/>
+                <input ng-model="value[1]"/>
+                <button ng-if="json_values.length != 1" ng-click="remove_json_value($index)">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div ng-repeat="value in json_values">
-  <input class="json_value" ng-model="value[0]"/>
-  <input ng-model="value[1]"/>
-  <button ng-click="remove_json_value($index)">X</button>
-</div>
+<!-- log answers part -->
+<div class="col-lg-6">
+  <div class="row">
+    <div class="col-lg-12" ng-repeat="message in messages">
+      <div class="row">
+        <hr style="margin-bottom: 5px; margin-top: 5px;">
+        <strong>{{message.event}}:</strong>
+        <span>{{message.message}}</span>
 
-
-<div ng-repeat="message in messages">
-  <!--{{message}}-->
-  <div ng-class="{success: message.status, error: !message.status}">Erfolgreich</div>
-  <div ng-if="message.message" style="margin-left: 50px;">erhaltene Antwort: {{message.message}}</div>
+        {{message}}
+        <!--<div ng-class="{success: message.status, error: !message.status}">Erfolgreich</div>-->
+        <!--<div ng-if="message.message" style="margin-left: 50px;">erhaltene Antwort: {{message.message}}</div>-->
+      </div>
+    </div>
+  </div>
 </div>

@@ -138,3 +138,15 @@ form button.btn {
 .nav_bar_element_active {
   background-color: #006600;
 }
+
+.socket_error {
+  color: #cc0000;
+}
+
+.socket_active {
+  color: #006600;
+}
+
+.socket_pending {
+  color: #ffc520;
+}

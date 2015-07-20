@@ -8,5 +8,6 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, user) {
+    $scope.user = user;
   });

@@ -14,7 +14,8 @@ angular.module('pokerFrontendApp')
       if (route.name) {
         routes.push({
           path: path,
-          name: route.name
+          name: route.name,
+          requireLogin: route.requireLogin
         });
       }
     });
