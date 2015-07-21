@@ -11,7 +11,7 @@ angular.module('pokerFrontendApp')
   .service('socket', function ($rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    var websocket_url = 'ws://localhost:8080/events/';//  'ws://192.168.0.139:8080/events/'
+    var websocket_url = 'ws://192.168.0.139:8080/events/';//  192.168.0.139:8080
     var webSocket = new WebSocket(websocket_url);
 
     webSocket.onerror = function (event) {

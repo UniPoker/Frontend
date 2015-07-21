@@ -28,8 +28,8 @@ module.exports = function(config) {
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/ng-fab-form/dist/ng-fab-form.js',
-      'bower_components/ng-websocket/ng-websocket.js',
       'bower_components/alertify-js/build/alertify.min.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

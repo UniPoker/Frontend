@@ -16,7 +16,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngFabForm',
-    'ngWebsocket'
+    'ui.bootstrap'
   ])
   .run(function ($rootScope, $location, user) {
     $rootScope.$on('$routeChangeStart', function(event, next){

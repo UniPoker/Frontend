@@ -79,22 +79,22 @@
   background-color: #63bff8 !important;
 }
 
-input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {
-  border-color: #c00640;
-}
+/*input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {*/
+  /*border-color: #c00640;*/
+/*}*/
+/**/
+/*input:focus, input:focus.ng-touched.ng-invalid:not(.ng-valid), textarea:focus, textarea:focus.ng-touched.ng-invalid:not(.ng-valid), select:focus, select:focus.ng-touched.ng-invalid:not(.ng-valid) {*/
+  /*border-color: #63bff8;*/
+/*}*/
+/**/
+/*input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {*/
+  /*border-color: #62b14c;*/
+/*}*/
 
-input:focus, input:focus.ng-touched.ng-invalid:not(.ng-valid), textarea:focus, textarea:focus.ng-touched.ng-invalid:not(.ng-valid), select:focus, select:focus.ng-touched.ng-invalid:not(.ng-valid) {
-  border-color: #63bff8;
-}
-
-input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {
-  border-color: #62b14c;
-}
-
-form[class*="ng-invalid"] button.btn {
-  background: #63bff8;
-  transition: none;
-}
+/*form[class*="ng-invalid"] button.btn {*/
+  /*background: #63bff8;*/
+  /*transition: none;*/
+/*}*/
 
 /*form button.btn {*/
   /*transition: all ease-in 0.5s;*/
