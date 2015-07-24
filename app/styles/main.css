@@ -139,15 +139,15 @@
   background-color: #006600;
 }
 
-.socket_error {
+.socket_error, .color_red {
   color: #cc0000;
 }
 
-.socket_active {
+.socket_active, .color_green {
   color: #006600;
 }
 
-.socket_pending {
+.socket_pending, .color_yellow {
   color: #ffc520;
 }
 

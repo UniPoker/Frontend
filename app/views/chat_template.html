@@ -1,7 +1,11 @@
 <div ng-repeat="message in messages">
-  <span>{{message.date.getHours()}}:{{message.date.getMinutes()}}</span>
-  <span>{{message.sender}}</span>
-  <span>{{message.message}}</span>
+  <div class="row">
+    <div class="col-lg-3">
+      <span>{{message.date.getHours()}}:{{message.date.getMinutes()}}</span>
+      <span ng-class="message.sender_color">{{message.sender}}</span>
+    </div>
+    <span class="col-lg-9">{{message.message}}</span>
+  </div>
 </div>
 
 <form role="form">

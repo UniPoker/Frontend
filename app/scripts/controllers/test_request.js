@@ -23,6 +23,9 @@ angular.module('pokerFrontendApp')
     $scope.json_event = '';
     $scope.interface_name = "PokerInterface";
 
+    $scope.is_successfull_message = function(message){
+      return socket.is_succesfull_response(message);
+    };
 
     $scope.add_json_value = function () {
       $scope.json_values.push(new Array(2));

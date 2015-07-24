@@ -17,8 +17,11 @@ angular.module('pokerFrontendApp')
         $scope.messages = [];
 
         $scope.send_message = function (message) {
+          if(message == undefined || message == ""){
+            return console.log("LEERE NACHRICHT ABGEFANGEN");
+          }
           var room_id = user.room_id;
-          room_id = room_id == null ? -1 : room_id;
+          room_id = (room_id == null) ? -1 : room_id;
           socket.send(socket.create_json_string({message: message, room_id: room_id}, "send_message"));
         };
 
@@ -31,10 +34,13 @@ angular.module('pokerFrontendApp')
         $scope.$on("chat_notification", function(event, data){
           var date = new Date();
           var body = data.body;
+          var sender = body.sender;
+          var sender_color = (sender == user.name) ? "color_green" : "color_red";
           var message = {
             message: body.message,
             date: date,
-            sender: body.sender,
+            sender: sender,
+            sender_color: sender_color,
             room_id: body.room_id
           };
           $scope.messages.push(message);
