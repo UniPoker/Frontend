@@ -11,6 +11,8 @@ angular.module('pokerFrontendApp')
   .service('socket', function ($rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
+    var INTERFACE_NAME = "PokerInterface";
+
     var websocket_url = 'ws://192.168.0.139:8080/events/';//  192.168.0.139:8080
     var webSocket = new WebSocket(websocket_url);
 
@@ -25,8 +27,12 @@ angular.module('pokerFrontendApp')
     };
 
     webSocket.onmessage = function (event) {
-      console.log("OnMessage ", event.data);
       var data = JSON.parse(event.data);
+      if(data.status == 0){
+        console.log("OnMessage ", data);
+      }else{
+        console.error("OnMessage ", data);
+      }
       $rootScope.$broadcast(data.event, data);
       $rootScope.$broadcast("onMessage", data); //just for test_request
     };
@@ -52,7 +58,8 @@ angular.module('pokerFrontendApp')
     this.create_json_string = function (body, event) {
       return JSON.stringify({
         "body": body,
-        "event": event
+        "event": event,
+        "interface_name": INTERFACE_NAME
       });
     };
 

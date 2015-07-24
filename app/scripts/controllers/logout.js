@@ -9,13 +9,9 @@
  */
 angular.module('pokerFrontendApp')
   .controller('LogoutCtrl', function ($rootScope, $scope, user, socket, $location) {
-    var logout_json = {
-      "event": "logout_user",
-      "body": {}
-    };
 
     $scope.logout = function(){
-      socket.send(JSON.stringify(logout_json));
+      socket.send(socket.create_json_string({}, "logout_user"));
     }();
 
     $scope.$on("logout_user_response", function(event, data){

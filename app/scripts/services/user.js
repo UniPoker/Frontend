@@ -22,4 +22,9 @@ angular.module('pokerFrontendApp')
       this.room_id = '';
       this.is_logged_in = false;
     };
+
+    this.set_room_id = function (room_id) {
+      console.log("SET ROOM ID");
+      this.room_id = parseInt(room_id);
+    }
   });

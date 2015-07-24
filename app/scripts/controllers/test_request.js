@@ -21,6 +21,7 @@ angular.module('pokerFrontendApp')
 
     $scope.json_values = new Array(new Array(2));
     $scope.json_event = '';
+    $scope.interface_name = "PokerInterface";
 
 
     $scope.add_json_value = function () {
@@ -34,12 +35,14 @@ angular.module('pokerFrontendApp')
     $scope.set_login_json = function () {
       $scope.json_values = [["user", "mustermann"], ["password", "123456"]];
       $scope.json_event = "login_user";
+      $scope.interface_name = "PokerInterface";
     };
 
     $scope.send_json = function () {
       var jsonObj = {
         body: {},
-        event: $scope.json_event
+        event: $scope.json_event,
+        interface_name: $scope.interface_name
       };
       //build body
       for (var i = 0; i < $scope.json_values.length; i++) {

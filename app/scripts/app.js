@@ -37,6 +37,11 @@ angular
         name: 'Main',
         requireLogin: true
       })
+      .when('/game', {
+        templateUrl: 'views/game.html',
+        controller: 'GameCtrl',
+        requireLogin: true
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',

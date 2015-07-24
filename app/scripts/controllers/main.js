@@ -8,8 +8,8 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('MainCtrl', function ($scope, user, socket) {
-    $scope.user = user;
+  .controller('MainCtrl', function ($scope, user, socket, $location) {
+    //$scope.user = user;
 
     $scope.rooms = [];
 
@@ -36,15 +36,23 @@ angular.module('pokerFrontendApp')
     });
 
     $scope.$on("create_room_response", function (event, data) {
-      if(socket.is_succesfull_response(data)){
-        $scope.rooms.push({"room_id": data.body.room_id, "room_seats": 1})
-      }else{
-        alertify.error("Konnte Raum nicht erzeugen");
+      if (socket.is_succesfull_response(data)) {
+        var room_id = data.body.room_id;
+        $scope.rooms.push({"room_id": room_id, "room_seats": 1})
+        user.set_room_id(room_id);
+        $location.path("/game");
+      } else {
+        alertify.error(data.message);
       }
       $scope.$apply();
     });
 
     $scope.$on("join_room_response", function (event, data) {
-      $scope.list_rooms();
+      if (socket.is_succesfull_response(data)) {
+        user.set_room_id(data.body.room_id);
+        //$scope.list_rooms();
+        $location.path("/game");
+        $scope.$apply();
+      }
     });
   });

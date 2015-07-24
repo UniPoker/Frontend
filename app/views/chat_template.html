@@ -1,0 +1,10 @@
+<div ng-repeat="message in messages">
+  <span>{{message.date.getHours()}}:{{message.date.getMinutes()}}</span>
+  <span>{{message.sender}}</span>
+  <span>{{message.message}}</span>
+</div>
+
+<form role="form">
+  <input type="text" ng-model="message">
+  <button ng-click="send_message(message)">senden</button>
+</form>

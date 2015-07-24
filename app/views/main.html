@@ -1,16 +1,25 @@
 <div class="col-lg-12">
   <div class="row">
+    <div class="col-lg-4">
+      <h4>Liste aller Räume</h4>
+      <ul class="list-group">
+        <a ng-click="join_room(room.room_id)" class="list-group-item" ng-repeat="room in rooms">
+          <span>Raum: {{room.room_id}}</span>
+          <span class="badge">{{room.room_seats}}/8</span> <!-- &infin; -->
+        </a>
+        <a ng-click="add_room()" class="list-group-item text-center"><i class="fa fa-plus-circle"></i></a>
+      </ul>
+    </div>
 
-    <div class="col-lg-3">
-      <div class="row">
-        <h4>Liste aller Räume</h4>
-        <ul class="list-group">
-          <a ng-click="join_room(room.room_id)" class="list-group-item" ng-repeat="room in rooms">
-            <span>Raum: {{room.room_id}}</span>
-            <span class="badge">{{room.room_seats}}/&infin;</span>
-          </a>
-          <a ng-click="add_room()" class="list-group-item text-center"><i class="fa fa-plus-circle"></i></a>
-        </ul>
+    <div class="col-lg-8">
+      <h4>&nbsp;</h4>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Lobby Chat</h3>
+        </div>
+        <div class="panel-body">
+          <chat></chat>
+        </div>
       </div>
     </div>
 
