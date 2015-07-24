@@ -19,7 +19,7 @@ angular.module('pokerFrontendApp')
 
     this.reset_vars = function () {
       this.user_name = '';
-      this.room_id = '';
+      this.room_id = null;
       this.is_logged_in = false;
     };
 

@@ -11,8 +11,10 @@ angular.module('pokerFrontendApp')
     return {
       templateUrl: '../views/chat_template.html',
       restrict: 'E',
-      //link: function postLink(scope, element, attrs) {
-      //}
+      scope: {
+        title: '@title',
+        overlay: '@overlay'
+      },
       controller: function ($scope, socket, user) {
         $scope.messages = [];
 
@@ -21,7 +23,7 @@ angular.module('pokerFrontendApp')
             return console.log("LEERE NACHRICHT ABGEFANGEN");
           }
           var room_id = user.room_id;
-          room_id = (room_id == null) ? -1 : room_id;
+          room_id = (room_id == null || room_id == '') ? -1 : room_id;
           socket.send(socket.create_json_string({message: message, room_id: room_id}, "send_message"));
         };
 

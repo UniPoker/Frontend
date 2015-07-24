@@ -80,25 +80,25 @@
 }
 
 /*input.ng-touched.ng-invalid:not(.ng-valid), textarea.ng-touched.ng-invalid:not(.ng-valid), select.ng-touched.ng-invalid:not(.ng-valid) {*/
-  /*border-color: #c00640;*/
+/*border-color: #c00640;*/
 /*}*/
 /**/
 /*input:focus, input:focus.ng-touched.ng-invalid:not(.ng-valid), textarea:focus, textarea:focus.ng-touched.ng-invalid:not(.ng-valid), select:focus, select:focus.ng-touched.ng-invalid:not(.ng-valid) {*/
-  /*border-color: #63bff8;*/
+/*border-color: #63bff8;*/
 /*}*/
 /**/
 /*input.ng-valid-required.ng-valid:not(.ng-invalid), textarea.ng-valid-required.ng-valid:not(.ng-invalid), select.ng-valid-required.ng-valid:not(.ng-invalid) {*/
-  /*border-color: #62b14c;*/
+/*border-color: #62b14c;*/
 /*}*/
 
 /*form[class*="ng-invalid"] button.btn {*/
-  /*background: #63bff8;*/
-  /*transition: none;*/
+/*background: #63bff8;*/
+/*transition: none;*/
 /*}*/
 
 /*form button.btn {*/
-  /*transition: all ease-in 0.5s;*/
-  /*background: #62b14c;*/
+/*transition: all ease-in 0.5s;*/
+/*background: #62b14c;*/
 /*}*/
 
 .text_center {
@@ -106,11 +106,11 @@
 }
 
 /*.standard_button {*/
-  /*padding: 5px 30px;*/
-  /*border: 1px solid #006600;*/
-  /*border-radius: 10px;*/
-  /*background-color: #006600;*/
-  /*color: #ffffff;*/
+/*padding: 5px 30px;*/
+/*border: 1px solid #006600;*/
+/*border-radius: 10px;*/
+/*background-color: #006600;*/
+/*color: #ffffff;*/
 /*}*/
 
 .standard_button:hover {
@@ -153,4 +153,36 @@
 
 a {
   cursor: pointer;
+}
+
+.word_break {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.chat_overlay_absolute {
+  position: absolute;
+  width: 350px;
+  right: 10px;
+  bottom: 20px;
+  max-height: 300px;
+  min-height: 250px;
+}
+
+.chat_inner_absolute {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+/** erweitert bootstrap panel-footer **/
+.chat_footer_absolute {
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+.chat_body_absolute {
+  height: 180px;
+  overflow-y: auto;
 }
