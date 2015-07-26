@@ -9,9 +9,9 @@
  */
 angular.module('pokerFrontendApp')
   .controller('GameCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.test_flipped = false;
+
+    $scope.flip_it = function(){
+      $scope.test_flipped = !$scope.test_flipped;
+    };
   });

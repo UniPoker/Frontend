@@ -1,29 +1,31 @@
-<div ng-class="{ chat_inner_absolute: overlay }" class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{title}}</h3>
-  </div>
-  <div ng-class="{ chat_body_absolute: overlay }" class="panel-body">
-    <div ng-repeat="message in messages">
-      <div class="row">
-        <div class="col-lg-3">
-          <!--<span>{{message.date.getHours()}}:{{message.date.getMinutes()}}</span>-->
-          <span>{{message.date | date:'HH:mm'}}</span>
-          <span ng-class="message.sender_color">{{message.sender}}</span>
-        </div>
-        <span class="word_break col-lg-9">{{message.message}}</span>
-      </div>
+<div ng-class="{ chat_overlay_absolute: overlay }">
+  <div ng-class="{ chat_inner_absolute: overlay }" class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{title}}</h3>
     </div>
+    <div ng-class="{ chat_body_absolute: overlay }" class="panel-body">
+      <div ng-repeat="message in messages">
+        <div class="row">
+          <div class="col-lg-3">
+            <!--<span>{{message.date.getHours()}}:{{message.date.getMinutes()}}</span>-->
+            <span>{{message.date | date:'HH:mm'}}</span>
+            <span ng-class="message.sender_color">{{message.sender}}</span>
+          </div>
+          <span class="word_break col-lg-9">{{message.message}}</span>
+        </div>
+      </div>
 
-    <!--<form role="form">-->
+      <!--<form role="form">-->
       <!--<input type="text" ng-model="message">-->
       <!--<button ng-click="send_message(message)">senden</button>-->
-    <!--</form>-->
+      <!--</form>-->
 
-  </div>
-  <div ng-class="{ chat_footer_absolute: overlay }" class="panel-footer">
-    <form role="form">
-      <input type="text" ng-model="message">
-      <button ng-click="send_message(message)">senden</button>
-    </form>
+    </div>
+    <div ng-class="{ chat_footer_absolute: overlay }" class="panel-footer">
+      <form role="form">
+        <input type="text" ng-model="message">
+        <button ng-click="send_message(message)">senden</button>
+      </form>
+    </div>
   </div>
 </div>
