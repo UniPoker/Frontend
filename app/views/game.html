@@ -1,5 +1,10 @@
-<card flipped="{{test_flipped}}"></card>
-<button ng-click="flip_it()">flip_it</button>
+<!--als idee: erst die drei aufm board dann die hand und letzten zwei als onclik-->
+<div class="stack-container" ng-class="{'card-stack-collapsed': collapsed}">
+  <card flipped="{{test_flipped}}"></card>
+  <card flipped="{{test_flipped}}"></card>
+  <card flipped="{{test_flipped}}"></card>
+</div>
+<button style="position: absolute; top: 200px;" ng-click="flip_it()">flip_it</button>
 
 
 <chat title="Raum Chat" overlay="true"></chat>

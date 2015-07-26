@@ -10,8 +10,10 @@
 angular.module('pokerFrontendApp')
   .controller('GameCtrl', function ($scope) {
     $scope.test_flipped = false;
+    $scope.collapsed = false;
 
     $scope.flip_it = function(){
       $scope.test_flipped = !$scope.test_flipped;
+      $scope.collapsed = !$scope.collapsed;
     };
   });

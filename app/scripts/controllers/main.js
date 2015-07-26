@@ -15,6 +15,9 @@ angular.module('pokerFrontendApp')
 
     //trollig, kann nicht $scope.list_rooms() aufrufen
     var init = function () {
+      if(user.room_id != null && user.room_id != ""){
+        socket.send(socket.create_json_string({room_id: user.room_id}, "leave_room"));
+      }
       socket.send(socket.create_json_string({}, "list_rooms"));
     }();
 
