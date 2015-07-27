@@ -12,7 +12,8 @@ angular.module('pokerFrontendApp')
       templateUrl: '../views/card_template.html',
       restrict: 'E',
       scope: {
-        flipped: '@'
+        flipped: '@',
+        color: '@'
       }
     };
   });

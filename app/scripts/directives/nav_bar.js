@@ -16,13 +16,13 @@ angular.module('pokerFrontendApp')
         $scope.routes = routeNavigation.routes;
         $scope.activeRoute = routeNavigation.activeRoute;
         $scope.show_route = function (route) {
-          if(user.is_logged_in){
-            if(route.name == 'Login'){
+          if (user.is_logged_in) {
+            if (route.name == 'Login') {
               return false;
-            }else{
+            } else {
               return true;
             }
-          }else{
+          } else {
             return !route.requireLogin;
           }
         };
