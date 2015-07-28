@@ -1,13 +1,20 @@
 <button ng-click="to_main_route()" class="btn btn-default">Zurück</button>
 
+{{user_money}}
+{{pod}}
+{{is_your_turn}}
+{{all_user}}
 <div class="position_relative">
-  <div ng-repeat="card in cards">
-    <card id="card_{{$index}}" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
+  <!--<div ng-repeat="card in cards">-->
+    <!--<card id="card_{{$index}}" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>-->
+  <!--</div>-->
+  <div ng-repeat="card in hand_cards">
+    <card id="hand_card_{{$index}}" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
   </div>
   <card flipped="false"></card>
 </div>
 
-<button style="position: absolute; top: 250px; z-index: 10;" ng-click="add()">add</button>
+<!--<button style="position: absolute; top: 250px; z-index: 10;" ng-click="add()">add</button>-->
 
 
 <chat title="Raum Chat" overlay="true"></chat>

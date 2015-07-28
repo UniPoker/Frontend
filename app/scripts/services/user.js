@@ -24,7 +24,6 @@ angular.module('pokerFrontendApp')
     };
 
     this.set_room_id = function (room_id) {
-      console.log("SET ROOM ID");
       this.room_id = parseInt(room_id);
     }
   });

@@ -23,7 +23,7 @@ angular.module('pokerFrontendApp')
     $scope.json_event = '';
     $scope.interface_name = "PokerInterface";
 
-    $scope.is_successfull_message = function(message){
+    $scope.is_successfull_message = function (message) {
       return socket.is_succesfull_response(message);
     };
 
@@ -38,6 +38,24 @@ angular.module('pokerFrontendApp')
     $scope.set_login_json = function () {
       $scope.json_values = [["user", "mustermann"], ["password", "123456"]];
       $scope.json_event = "login_user";
+      $scope.interface_name = "PokerInterface";
+    };
+
+    $scope.set_join_room = function () {
+      $scope.json_values = [["room_id", "1"]];
+      $scope.json_event = "join_room";
+      $scope.interface_name = "PokerInterface";
+    };
+
+    $scope.set_create_room = function () {
+      $scope.json_values = [];
+      $scope.json_event = "create_room";
+      $scope.interface_name = "PokerInterface";
+    };
+
+    $scope.set_start_round = function(){
+      $scope.json_values = [["room_id", "1"]];
+      $scope.json_event = "start_round";
       $scope.interface_name = "PokerInterface";
     };
 
