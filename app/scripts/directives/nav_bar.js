@@ -12,7 +12,7 @@ angular.module('pokerFrontendApp')
       templateUrl: '../views/nav_bar.html',
       restrict: 'E',
       controller: function ($scope, user) {
-        $scope.user = user;
+        //$scope.user = user;
         $scope.routes = routeNavigation.routes;
         $scope.activeRoute = routeNavigation.activeRoute;
         $scope.show_route = function (route) {

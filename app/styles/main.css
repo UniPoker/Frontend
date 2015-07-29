@@ -164,11 +164,20 @@ a {
   width: 350px;
   right: 10px;
   bottom: 20px;
-  max-height: 300px;
   min-height: 250px;
 }
 
-.chat_inner_absolute {
+.user_list_absolute{
+  position: absolute;
+  width: 350px;
+  right: 10px;
+  bottom: 300px;
+  min-height: 250px;
+}
+
+/*.user_list_absolute > div*/
+
+.chat_inner_absolute{
   height: 100%;
   width: 100%;
   position: absolute;

@@ -8,8 +8,9 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('GameCtrl', function ($scope, $location, socket, user) {
+  .controller('GameCtrl', function ($scope, $location, socket, user, playersInGame) {
 
+    $scope.playersInGame = playersInGame;
     //maximal 7, 5 aufm board, 2 handkarten
     $scope.board_cards = [];
     $scope.hand_cards = [];
@@ -86,22 +87,22 @@ angular.module('pokerFrontendApp')
     }
 
     //$scope.add = function () {
-      ////hier kommt array vom server, for schleife durchlaufen und pushen, dann unten das aufrufen
-      //$scope.cards.push({
-      //  value: Math.floor((Math.random() * 10) + 1),
-      //  color: $scope.colors[Math.floor((Math.random() * 3))],
-      //  flipped: false
-      //});
-      //var length = $scope.cards.length;
-      //if (length == 5) {
-      //  setTimeout(function () { //muss timeout hin, damit das ng-repeat durch ist
-      //    move_first_three_board_card(0);
-      //  }, 100);
-      //} else if (length > 5 && length < 8) {
-      //  setTimeout(function () {
-      //    move_last_board_cards($scope.cards.length - 1);
-      //  }, 100);
-      //}
+    ////hier kommt array vom server, for schleife durchlaufen und pushen, dann unten das aufrufen
+    //$scope.cards.push({
+    //  value: Math.floor((Math.random() * 10) + 1),
+    //  color: $scope.colors[Math.floor((Math.random() * 3))],
+    //  flipped: false
+    //});
+    //var length = $scope.cards.length;
+    //if (length == 5) {
+    //  setTimeout(function () { //muss timeout hin, damit das ng-repeat durch ist
+    //    move_first_three_board_card(0);
+    //  }, 100);
+    //} else if (length > 5 && length < 8) {
+    //  setTimeout(function () {
+    //    move_last_board_cards($scope.cards.length - 1);
+    //  }, 100);
+    //}
     //};
 
     $scope.add_hand_cards = function (cards) {
@@ -120,11 +121,14 @@ angular.module('pokerFrontendApp')
 
     $scope.$on("round_starts_notification", function (event, data) {
       var body = data.body;
+      var all_players = body.all_users;
       $scope.$apply(function () {
         $scope.user_money = body.your_money;
         $scope.pod = body.pod;
         $scope.is_your_turn = body.your_turn;
-        $scope.all_user = body.all_users;
+        for (var i = 0; i < all_players.length; i++) {
+          playersInGame.add_player(all_players[i]);
+        }
         $scope.add_hand_cards(body.cards);
       });
     });
