@@ -20,6 +20,13 @@ angular.module('pokerFrontendApp')
       });
     };
 
+    this.set_all_players = function(all_players){
+      this.all = [];
+      for (var i = 0; i < all_players.length; i++) {
+        this.add_player(all_players[i]);
+      }
+    };
+
     /**
      * returns the index of the player with the given name.
      * is -1 if not found

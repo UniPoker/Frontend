@@ -126,10 +126,28 @@ angular.module('pokerFrontendApp')
         $scope.user_money = body.your_money;
         $scope.pod = body.pod;
         $scope.is_your_turn = body.your_turn;
-        for (var i = 0; i < all_players.length; i++) {
-          playersInGame.add_player(all_players[i]);
-        }
+        set_all_players(all_players);
         $scope.add_hand_cards(body.cards);
+      });
+    });
+
+    function set_all_players(all_players) {
+      playersInGame.set_all_players(all_players);
+    }
+
+    $scope.$on("user_joined_notification", function (event, data) {
+      var all_users = data.body.all_users;
+      console.log("JOINED: ", all_users);
+      $scope.$apply(function () {
+        set_all_players(all_users);
+      });
+    });
+
+    $scope.$on("user_left_notification", function (event, data) {
+      var all_users = data.body.all_users;
+      console.log("LEFT: ", all_users);
+      $scope.$apply(function () {
+        set_all_players(all_users);
       });
     });
   });
