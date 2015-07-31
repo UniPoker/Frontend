@@ -16,12 +16,14 @@ angular.module('pokerFrontendApp')
         overlay: '@overlay'
       },
       controller: function ($scope, socket, user) {
+        $scope.message = "";
         $scope.messages = [];
 
         $scope.send_message = function (message) {
           if(message == undefined || message == ""){
             return console.log("LEERE NACHRICHT ABGEFANGEN");
           }
+          $scope.message = "";
           var room_id = user.room_id;
           room_id = (room_id == null || room_id == '') ? -1 : room_id;
           socket.send(socket.create_json_string({message: message, room_id: room_id}, "send_message"));

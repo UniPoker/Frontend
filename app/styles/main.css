@@ -302,3 +302,9 @@ a {
 .position_relative {
   position: relative;
 }
+
+.game_buttons {
+  top: 500px;
+  position: relative;
+  text-align: center;
+}

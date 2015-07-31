@@ -22,8 +22,8 @@ angular.module('pokerFrontendApp')
 
     //positioning of card images in px
     var CARD_WIDTH = 64;
-    var BOARD_LEFT = 550;
-    var HAND_LEFT = 600;
+    var BOARD_LEFT = 530;
+    var HAND_LEFT = 580;
     var HAND_TOP = 350;
 
     //test section
@@ -117,6 +117,26 @@ angular.module('pokerFrontendApp')
       setTimeout(function () {
         move_two_handcards(0);
       }, 100);
+    };
+
+    $scope.do_bet = function(){
+      socket.send(socket.create_json_string({}, 'do_bet'));
+    };
+
+    $scope.do_fold = function(){
+      socket.send(socket.create_json_string({bet: 15}, 'do_fold'));
+    };
+
+    $scope.do_call = function(){
+      socket.send(socket.create_json_string({}, 'do_call'));
+    };
+
+    $scope.do_raise = function(){
+      socket.send(socket.create_json_string({raise: 15}, 'do_raise'));
+    };
+
+    $scope.do_check = function(){
+      socket.send(socket.create_json_string({}, 'do_check'));
     };
 
     $scope.$on("round_starts_notification", function (event, data) {
