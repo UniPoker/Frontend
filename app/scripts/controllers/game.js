@@ -19,6 +19,13 @@ angular.module('pokerFrontendApp')
     $scope.pod = 0;
     $scope.is_your_turn = false;
     $scope.all_user = [];
+    $scope.available_actions = {
+      bet: false,
+      call: false,
+      raise: false,
+      fold: false,
+      check: false
+    };
 
     //positioning of card images in px
     var CARD_WIDTH = 64;
@@ -42,10 +49,13 @@ angular.module('pokerFrontendApp')
       $scope.hand_cards[card_id].flipped = !$scope.hand_cards[card_id].flipped;
     };
 
-    function move_first_three_board_card(card_id) {
-      if (card_id == 3) {
-        //if three cards are animated, stop
-        move_two_handcards(card_id);
+    $scope.flip_board_cards = function (card_id) {
+      $scope.board_cards[card_id].flipped = !$scope.board_cards[card_id].flipped;
+    };
+
+    function move_boardcards(card_id) {
+      if (card_id == 5) {
+        //all cards animated
         return;
       }
 
@@ -53,9 +63,9 @@ angular.module('pokerFrontendApp')
         left: (BOARD_LEFT - ((CARD_WIDTH + 10) * card_id))
       }, 200, "easeOutQuad", function () {
         $scope.$apply(function () {
-          $scope.flip_it(card_id)
+          $scope.flip_board_cards(card_id)
         });
-        move_first_three_board_card(card_id + 1);
+        move_boardcards(card_id + 1);
       });
     }
 
@@ -76,34 +86,15 @@ angular.module('pokerFrontendApp')
       });
     }
 
-    function move_last_board_cards(card_id) {
-      $("#card_" + card_id + " > div").animate({
-        left: (BOARD_LEFT - ((CARD_WIDTH + 10) * (card_id - 2))) //-2 weil schon zwei handkarten liegen
-      }, 200, "easeOutQuad", function () {
-        $scope.$apply(function () {
-          $scope.flip_it(card_id)
-        });
-      });
-    }
-
-    //$scope.add = function () {
-    ////hier kommt array vom server, for schleife durchlaufen und pushen, dann unten das aufrufen
-    //$scope.cards.push({
-    //  value: Math.floor((Math.random() * 10) + 1),
-    //  color: $scope.colors[Math.floor((Math.random() * 3))],
-    //  flipped: false
-    //});
-    //var length = $scope.cards.length;
-    //if (length == 5) {
-    //  setTimeout(function () { //muss timeout hin, damit das ng-repeat durch ist
-    //    move_first_three_board_card(0);
-    //  }, 100);
-    //} else if (length > 5 && length < 8) {
-    //  setTimeout(function () {
-    //    move_last_board_cards($scope.cards.length - 1);
-    //  }, 100);
+    //function move_last_board_cards(card_id) {
+    //  $("#card_" + card_id + " > div").animate({
+    //    left: (BOARD_LEFT - ((CARD_WIDTH + 10) * (card_id - 2))) //-2 weil schon zwei handkarten liegen
+    //  }, 200, "easeOutQuad", function () {
+    //    $scope.$apply(function () {
+    //      $scope.flip_it(card_id)
+    //    });
+    //  });
     //}
-    //};
 
     $scope.add_hand_cards = function (cards) {
       for (var i = 0; i < cards.length; i++) {
@@ -119,25 +110,53 @@ angular.module('pokerFrontendApp')
       }, 100);
     };
 
-    $scope.do_bet = function(){
-      socket.send(socket.create_json_string({}, 'do_bet'));
+    $scope.add_board_cards = function (cards) {
+      for (var i = 0; i < cards.length; i++) {
+        if($scope.board_cards[i] == undefined || ($scope.board_cards[i].value != cards[i].value && $scope.board_cards[i].color != cards[i].symbol)){
+          $scope.board_cards.push({
+            flipped: false,
+            color: cards[i].symbol,
+            value: cards[i].value
+          });
+        }
+      }
+      //setTimeout for ng-repeat to run
+      setTimeout(function () {
+        move_boardcards(0);
+      }, 100);
     };
 
-    $scope.do_fold = function(){
-      socket.send(socket.create_json_string({bet: 15}, 'do_fold'));
+    $scope.do_bet = function () {
+      socket.send(socket.create_json_string({bet: 15}, 'do_bet'));
     };
 
-    $scope.do_call = function(){
+    $scope.do_fold = function () {
+      socket.send(socket.create_json_string({}, 'do_fold'));
+    };
+
+    $scope.do_call = function () {
       socket.send(socket.create_json_string({}, 'do_call'));
     };
 
-    $scope.do_raise = function(){
+    $scope.do_raise = function () {
       socket.send(socket.create_json_string({raise: 15}, 'do_raise'));
     };
 
-    $scope.do_check = function(){
+    $scope.do_check = function () {
       socket.send(socket.create_json_string({}, 'do_check'));
     };
+
+    $scope.$on("action_notification", function (event, data) {
+      var body = data.body;
+      var all_players = body.all_users;
+      $scope.$apply(function () {
+        $scope.user_money = body.your_money;
+        $scope.pod = body.pod;
+        $scope.is_your_turn = body.your_turn;
+        $scope.available_actions = body.available_methods;
+        set_all_players(all_players);
+      });
+    });
 
     $scope.$on("round_starts_notification", function (event, data) {
       var body = data.body;
@@ -146,6 +165,7 @@ angular.module('pokerFrontendApp')
         $scope.user_money = body.your_money;
         $scope.pod = body.pod;
         $scope.is_your_turn = body.your_turn;
+        $scope.available_actions = body.available_methods;
         set_all_players(all_players);
         $scope.add_hand_cards(body.cards);
       });
@@ -168,6 +188,13 @@ angular.module('pokerFrontendApp')
       console.log("LEFT: ", all_users);
       $scope.$apply(function () {
         set_all_players(all_users);
+      });
+    });
+
+    $scope.$on("board_cards_notification", function (event, data) {
+      var body = data.body;
+      $scope.$apply(function(){
+        $scope.add_board_cards(body.cards);
       });
     });
   });
