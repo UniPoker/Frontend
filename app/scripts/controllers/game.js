@@ -166,6 +166,8 @@ angular.module('pokerFrontendApp')
       var body = data.body;
       var all_players = body.all_users;
       $scope.$apply(function () {
+        $scope.board_cards = [];
+        $scope.hand_cards = [];
         $scope.user_money = body.your_money;
         $scope.pod = body.pod;
         $scope.is_your_turn = body.your_turn;

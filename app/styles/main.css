@@ -150,6 +150,10 @@
   color: #ffc520;
 }
 
+.color_blue {
+  color: #0040D0;
+}
+
 a {
   cursor: pointer;
 }
@@ -164,7 +168,7 @@ a {
   width: 350px;
   right: 10px;
   bottom: 20px;
-  min-height: 250px;
+  min-height: 275px;
 }
 
 .user_list_absolute{

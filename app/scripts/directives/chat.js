@@ -44,12 +44,39 @@ angular.module('pokerFrontendApp')
             message: body.message,
             date: date,
             sender: sender,
-            sender_color: sender_color,
-            room_id: body.room_id
+            sender_color: sender_color
+            //room_id: body.room_id
           };
           $scope.messages.push(message);
+          scroll_to_bottom();
           $scope.$apply();
         });
+
+        $scope.$on("action_performed_notification", function(event, data){
+          var date = new Date();
+          var body = data.body;
+          var sender = body.sender;
+          var sender_color = "color_blue";
+          var message = {
+            message: body.message,
+            date: date,
+            sender: sender,
+            sender_color: sender_color
+            //room_id: body.room_id
+          };
+          $scope.messages.push(message);
+          scroll_to_bottom();
+          $scope.$apply();
+        });
+
+        function scroll_to_bottom (){
+          var body = $('#chat_body');
+          body.animate({
+            scrollTop: body[0].scrollHeight
+            //scrollTop: $('#your-id').offset().top
+            //scrollTop: $('.your-class').offset().top
+          }, 'slow');
+        }
       }
     };
   });
