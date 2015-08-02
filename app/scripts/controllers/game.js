@@ -49,13 +49,17 @@ angular.module('pokerFrontendApp')
       $scope.hand_cards[card_id].flipped = !$scope.hand_cards[card_id].flipped;
     };
 
+    /**
+     * sets flipped of card with given card_id = true
+     * @param card_id id of the flipping card
+     */
     $scope.flip_board_cards = function (card_id) {
-      $scope.board_cards[card_id].flipped = !$scope.board_cards[card_id].flipped;
+      $scope.board_cards[card_id].flipped = true;//!$scope.board_cards[card_id].flipped;
     };
 
     function move_boardcards(card_id) {
       if (card_id == 5) {
-        //all cards animated
+        //all possible cards animated
         return;
       }
 
