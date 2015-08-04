@@ -13,7 +13,8 @@ angular.module('pokerFrontendApp')
       restrict: 'E',
       scope: {
         flipped: '@',
-        color: '@'
+        color: '@',
+        sise: '@'
       }
     };
   });

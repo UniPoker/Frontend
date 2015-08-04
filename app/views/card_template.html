@@ -1,15 +1,15 @@
-<div ng-class="{'flipped-container': (flipped === 'true') }" class="flip-container">
+<div ng-class="{'flipped-container': (flipped === 'true'), 'mini-container': (sise === 'mini')}" class="flip-container">
   <!-- ontouchstart="this.classList.toggle('hover');" for touch hover -->
   <div class="flipper">
-    <div class="front">
+    <div ng-class="{'mini-front': (sise === 'mini')}" class="front">
       <!-- front content -->
       <!-- hier noch variable den namen mit ng-src -->
       <img draggable="false" class="card" src="../images/cards/card_background.svg">
     </div>
-    <div class="back">
+    <div ng-class="{'mini-back': (sise === 'mini')}" class="back">
       <!-- back content -->
       <!--<img class="card" src="../images/cards/diamonds_13.svg">-->
-      <img class="card" ng-src="../images/cards/{{color}}.svg">
+      <img ng-if="color != '_0'" class="card" ng-src="../images/cards/{{color}}.svg">
     </div>
   </div>
 </div>
