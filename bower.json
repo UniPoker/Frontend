@@ -23,7 +23,7 @@
     "alertify-js": {
       "main": [
         "./build/css/alertify.min.css",
-        "./build/css/themes/bootstrap.min.css",
+        "./build/css/themes/default.min.css",
         "./build/alertify.min.js"
       ]
     },

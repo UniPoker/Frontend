@@ -30,7 +30,7 @@
   </div>
   <div class="panel-body">
     <div ng-repeat="player in playersInGame.all">
-      <div class="col-lg-12">
+      <div ng-class="{ active_player: player.is_active }" class="col-lg-12">
         <div class="row">
           <div class="col-lg-5">{{player.user_name}}</div>
           <div ng-show="player.small_blind" class="col-lg-1">

@@ -16,7 +16,8 @@ angular.module('pokerFrontendApp')
       this.all.push({
         user_name: player_json.username,
         small_blind: player_json.is_small_blind,
-        big_blind: player_json.is_big_blind
+        big_blind: player_json.is_big_blind,
+        is_active: player_json.is_active
       });
     };
 

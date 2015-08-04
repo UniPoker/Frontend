@@ -116,7 +116,7 @@ angular.module('pokerFrontendApp')
 
     $scope.add_board_cards = function (cards) {
       for (var i = 0; i < cards.length; i++) {
-        if($scope.board_cards[i] == undefined || ($scope.board_cards[i].value != cards[i].value && $scope.board_cards[i].color != cards[i].symbol)){
+        if ($scope.board_cards[i] == undefined || ($scope.board_cards[i].value != cards[i].value && $scope.board_cards[i].color != cards[i].symbol)) {
           $scope.board_cards.push({
             flipped: false,
             color: cards[i].symbol,
@@ -131,11 +131,17 @@ angular.module('pokerFrontendApp')
     };
 
     $scope.do_bet = function () {
-      socket.send(socket.create_json_string({bet: 15}, 'do_bet'));
+      alertify.prompt('Wie viel möchtest du setzen?', 'Betrag',
+        function (evt, value) {
+          socket.send(socket.create_json_string({bet: value}, 'do_bet'));
+        }
+      ).set('type', 'number').set('movable', false).setHeader('Setzen');
     };
 
     $scope.do_fold = function () {
-      socket.send(socket.create_json_string({}, 'do_fold'));
+      alertify.confirm('Wirklich aussteigen?', function () {
+        socket.send(socket.create_json_string({}, 'do_fold'));
+      }).set('movable', false).setHeader('Aussteigen');
     };
 
     $scope.do_call = function () {
@@ -143,7 +149,11 @@ angular.module('pokerFrontendApp')
     };
 
     $scope.do_raise = function () {
-      socket.send(socket.create_json_string({raise: 15}, 'do_raise'));
+      alertify.prompt('Um wie viel möchtest du den zu setzenden Betrag erhöhen?', 'Betrag',
+        function (evt, value) {
+          socket.send(socket.create_json_string({raise: value}, 'do_raise'));
+        }
+      ).set('type', 'number').set('movable', false).setHeader('Erhöhen');
     };
 
     $scope.do_check = function () {
@@ -159,6 +169,9 @@ angular.module('pokerFrontendApp')
         $scope.is_your_turn = body.your_turn;
         $scope.available_actions = body.available_methods;
         set_all_players(all_players);
+        if ($scope.is_your_turn) {
+          alertify.message("Du bist am Zug");
+        }
       });
     });
 
@@ -199,7 +212,7 @@ angular.module('pokerFrontendApp')
 
     $scope.$on("board_cards_notification", function (event, data) {
       var body = data.body;
-      $scope.$apply(function(){
+      $scope.$apply(function () {
         $scope.add_board_cards(body.cards);
       });
     });
