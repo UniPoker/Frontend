@@ -171,7 +171,7 @@ a {
   min-height: 275px;
 }
 
-.user_list_absolute{
+.user_list_absolute {
   position: absolute;
   width: 350px;
   right: 10px;
@@ -181,7 +181,7 @@ a {
 
 /*.user_list_absolute > div*/
 
-.chat_inner_absolute{
+.chat_inner_absolute {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -260,6 +260,7 @@ a {
 
 .card {
   height: 100%;
+  position: absolute;
 }
 
 /*div.stack-container {*/

@@ -9,10 +9,27 @@
 angular.module('pokerFrontendApp')
   .directive('cardZoom', function () {
     return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the cardZoom directive');
+      //template: '<div></div>',
+      restrict: 'A',
+      link: function (scope, element, attrs) {
+        //just for the mini version of cards
+        var height = 0;
+
+        element.on('mouseenter', function(){
+          console.log("ENTER", element, element.parent);
+          height = element.height();
+          element.css({
+            height:  90 + 'px',
+            'z-index': 15
+          });
+        });
+
+        element.on('mouseleave', function(){
+          element.css({
+            height:  height + 'px',
+            'z-index': 0
+          });
+        });
       }
     };
   });
