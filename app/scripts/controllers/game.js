@@ -26,6 +26,9 @@ angular.module('pokerFrontendApp')
       fold: false,
       check: false
     };
+    $scope.call_value = 0;
+    $scope.is_running = false;
+    $scope.new_game_alert;
 
     //positioning of card images in px
     var CARD_WIDTH = 64;
@@ -37,9 +40,12 @@ angular.module('pokerFrontendApp')
     $scope.test_flipped = false;
     $scope.collapsed = false;
 
-    var init = function () {
+    //var init = function () {
+    //}();
+
+    function start_round() {
       socket.send(socket.create_json_string({room_id: user.room_id}, "start_round"));
-    }();
+    }
 
     $scope.to_main_route = function () {
       $location.path("/main");
@@ -168,6 +174,7 @@ angular.module('pokerFrontendApp')
         $scope.pod = body.pod;
         $scope.is_your_turn = body.your_turn;
         $scope.available_actions = body.available_methods;
+        $scope.is_running = body.is_running;
         set_all_players(all_players);
         if ($scope.is_your_turn) {
           alertify.message("Du bist am Zug");
@@ -185,6 +192,8 @@ angular.module('pokerFrontendApp')
         $scope.pod = body.pod;
         $scope.is_your_turn = body.your_turn;
         $scope.available_actions = body.available_methods;
+        $scope.call_value = body.call_value;
+        $scope.is_running = body.is_running;
         set_all_players(all_players);
         $scope.add_hand_cards(body.cards);
       });
@@ -196,7 +205,6 @@ angular.module('pokerFrontendApp')
 
     $scope.$on("user_joined_notification", function (event, data) {
       var all_users = data.body.all_users;
-      console.log("JOINED: ", all_users);
       $scope.$apply(function () {
         set_all_players(all_users);
       });
@@ -204,10 +212,13 @@ angular.module('pokerFrontendApp')
 
     $scope.$on("user_left_notification", function (event, data) {
       var all_users = data.body.all_users;
-      console.log("LEFT: ", all_users);
       $scope.$apply(function () {
         set_all_players(all_users);
       });
+    });
+
+    $scope.$on("request_start_round_response", function(event, data){
+      alertify.message(data.body.message);
     });
 
     $scope.$on("board_cards_notification", function (event, data) {
@@ -215,5 +226,25 @@ angular.module('pokerFrontendApp')
       $scope.$apply(function () {
         $scope.add_board_cards(body.cards);
       });
+    });
+
+    $scope.$watch('is_running', function (newValue, oldValue) {
+      if (newValue == true) {
+        //alertify.closeAll();
+        $scope.new_game_alert.close();
+      } else {
+        $scope.new_game_alert = alertify.alert('Neue Runde starten', 'Eine Runde kann gestartet werden, wenn sich mindestens zwei Spieler im Raum befinden und noch kein Spiel läuft.').
+          set('modal', false).
+          set('movable', false).
+          set('closable', false).
+          set('pinnable', false).
+          set('label', 'Start anfragen').
+          set('onok', function (closeEvent) {
+            closeEvent.cancel = true;
+            start_round();
+          }).
+          set('autoReset', false).
+          moveTo(0, 250);
+      }
     });
   });

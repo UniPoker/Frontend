@@ -20,7 +20,9 @@
   <button ng-disabled="!available_actions.bet" ng-click="do_bet()" class="btn btn-primary">Bet</button>
   <button ng-disabled="!available_actions.fold" ng-click="do_fold()" class="btn btn-danger">Fold</button>
   <button ng-disabled="!available_actions.raise" ng-click="do_raise()" class="btn btn-warning">Raise</button>
-  <button ng-disabled="!available_actions.call" ng-click="do_call()" class="btn btn-success">Call</button>
+  <button ng-disabled="!available_actions.call" ng-click="do_call()" class="btn btn-success">Call {{(call_value != 0 &&
+    available_actions.call) ? '(' + call_value + ')' : ''}}
+  </button>
   <button ng-disabled="!available_actions.check" ng-click="do_check()" class="btn btn-info">Check</button>
 </div>
 
@@ -32,13 +34,11 @@
     <div ng-repeat="player in playersInGame.all">
       <div ng-class="{ active_player: player.is_active }" class="col-lg-12">
         <div class="row">
-          <span style="line-height: 45px;" class="col-lg-5"><i ng-class="{'fa-btc': player.big_blind, 'fa-usd': player.small_blind}" class="fa color_black"></i> {{player.user_name}}</span>
-          <!--<div ng-show="player.small_blind" class="col-lg-1">-->
-            <!--<i class="fa fa-usd"></i>-->
-          <!--</div>-->
-          <!--<div ng-show="player.big_blind" class="col-lg-1">-->
-            <!--<i class="fa fa-btc"></i>-->
-          <!--</div>-->
+          <!-- username + small/big blind symbol -->
+          <span style="line-height: 45px;" class="col-lg-6">{{player.user_name}} <i
+            ng-class="{'fa-btc': player.big_blind, 'fa-usd': player.small_blind}" class="fa color_black"></i>
+          </span>
+
           <div class="col-lg-6">
             <div class="row">
               <div style="z-index: 15;" class="mini-height col-lg-5 row" ng-repeat="card in player.hand_cards">

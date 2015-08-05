@@ -23,6 +23,7 @@ function create_leave_modal($modal, next, $rootScope, $location) {
   modal_instance.result.then(function (target_route) {
     // ok function
     console.log("OK FUNCTION ", target_route);
+    alertify.closeAll();
     $rootScope.left_game_route_through_modal = true;
     $location.path(target_route);
   }, function () {
