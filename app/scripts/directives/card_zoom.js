@@ -11,25 +11,26 @@ angular.module('pokerFrontendApp')
     return {
       //template: '<div></div>',
       restrict: 'A',
+      scope: {
+        mini: '@'
+      },
       link: function (scope, element, attrs) {
         //just for the mini version of cards
-        var height = 0;
-
-        element.on('mouseenter', function(){
-          console.log("ENTER", element, element.parent);
-          height = element.height();
-          element.css({
-            height:  90 + 'px',
-            'z-index': 15
+        if (scope.mini === "mini") {
+          element.on('mouseenter', function () {
+            element.parent().parent().parent().parent().parent().css({
+              'z-index': 15
+            });
+            element.addClass('card_hovered');
           });
-        });
 
-        element.on('mouseleave', function(){
-          element.css({
-            height:  height + 'px',
-            'z-index': 0
+          element.on('mouseleave', function () {
+            element.parent().parent().parent().parent().parent().css({
+              'z-index': 1
+            });
+            element.removeClass('card_hovered');
           });
-        });
+        }
       }
     };
   });

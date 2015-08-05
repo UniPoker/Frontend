@@ -261,6 +261,18 @@ a {
 .card {
   height: 100%;
   position: absolute;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+.card_hovered {
+  -moz-transform: scale(2.5);
+  -webkit-transform: scale(2.5);
+  -o-transform: scale(2.5);
+  transform: scale(2.5);
+  -ms-transform: scale(2.5);
 }
 
 /*div.stack-container {*/

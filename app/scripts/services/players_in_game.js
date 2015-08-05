@@ -8,7 +8,7 @@
  * Service in the pokerFrontendApp.
  */
 angular.module('pokerFrontendApp')
-  .service('playersInGame', function () {
+  .service('playersInGame', function (user) {
     this.all = [];
 
     this.add_player = function (player_json) {
@@ -17,7 +17,15 @@ angular.module('pokerFrontendApp')
         small_blind: player_json.is_small_blind,
         big_blind: player_json.is_big_blind,
         is_active: player_json.is_active,
-        hand_cards: [{
+        hand_cards: getHandCards(player_json)
+        //player_json.hand_cards
+      });
+    };
+
+    function getHandCards(player_json){
+      console.log("PLAYJSON ", player_json, player_json.username, user.name);
+      if(user.name != player_json.username){
+        return [{
           flipped: player_json.show_cards,
           color: player_json.hand_cards[0].symbol,
           value: player_json.hand_cards[0].value
@@ -27,9 +35,9 @@ angular.module('pokerFrontendApp')
             color: player_json.hand_cards[1].symbol,
             value: player_json.hand_cards[1].value
           }]
-        //player_json.hand_cards
-      });
-    };
+      }
+      return [];
+    }
 
     this.set_all_players = function (all_players) {
       this.all = [];

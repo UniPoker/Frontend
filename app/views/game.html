@@ -32,7 +32,7 @@
     <div ng-repeat="player in playersInGame.all">
       <div ng-class="{ active_player: player.is_active }" class="col-lg-12">
         <div class="row">
-          <span style="line-height: 45px;" class="col-lg-5">{{player.user_name}} <i ng-class="{'fa-btc': player.big_blind, 'fa-usd': player.small_blind}" class="fa color_black"></i></span>
+          <span style="line-height: 45px;" class="col-lg-5"><i ng-class="{'fa-btc': player.big_blind, 'fa-usd': player.small_blind}" class="fa color_black"></i> {{player.user_name}}</span>
           <!--<div ng-show="player.small_blind" class="col-lg-1">-->
             <!--<i class="fa fa-usd"></i>-->
           <!--</div>-->
@@ -41,7 +41,7 @@
           <!--</div>-->
           <div class="col-lg-6">
             <div class="row">
-              <div class="mini-height col-lg-5 row" ng-repeat="card in player.hand_cards">
+              <div style="z-index: 15;" class="mini-height col-lg-5 row" ng-repeat="card in player.hand_cards">
                 <card sise="mini" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
               </div>
             </div>

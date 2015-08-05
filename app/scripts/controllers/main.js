@@ -41,7 +41,7 @@ angular.module('pokerFrontendApp')
     $scope.$on("create_room_response", function (event, data) {
       if (socket.is_succesfull_response(data)) {
         var room_id = data.body.room_id;
-        $scope.rooms.push({"room_id": room_id, "room_seats": 1})
+        $scope.rooms.push({"room_id": room_id, "room_seats": 1});
         user.set_room_id(room_id);
         $location.path("/game");
       } else {
@@ -57,5 +57,11 @@ angular.module('pokerFrontendApp')
         $location.path("/game");
         $scope.$apply();
       }
+    });
+
+
+    $scope.$on("new_rooms_notification", function(event, data){
+      $scope.rooms = data.body;
+      $scope.$apply();
     });
   });
