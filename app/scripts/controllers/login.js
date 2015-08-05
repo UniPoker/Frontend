@@ -8,7 +8,7 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('LoginCtrl', function ($scope, $location, socket, user, $modal) {
+  .controller('LoginCtrl', function ($scope, $location, socket, user, $mdDialog) {
 
     $scope.formData = {
       username: 'mustermann',
@@ -20,29 +20,40 @@ angular.module('pokerFrontendApp')
       socket.send(socket.create_json_string({"user": user, "password": pw}, "login_user"));
     };
 
-    $scope.register_user = function (pw, username) {
+    $scope.register_user = function (event) {
       // creates a modal with the given template and controller
-      var modal_instance = $modal.open({
-        animation: true,
-        templateUrl: './views/registration_template.html',
+      $mdDialog.show({
         controller: 'RegistrationModalCtrl',
-        resolve: {
-          fabFormOptions: function () {
-            return $scope.defaultFormOptions;
-          }
-        }
-      });
-      // to react on the buttons of the modal
-      modal_instance.result.then(function (form_data_user) {
-        // ok function
-        socket.send(socket.create_json_string({
-          name: form_data_user.username,
-          password: form_data_user.password,
-          email: form_data_user.email
-        }, "register_user"));
-      }, function () {
-        // dismiss function
-      });
+        templateUrl: './views/registration_template.html',
+        parent: angular.element(document.body),
+        targetEvent: event,
+      })
+        .then(function (answer) {
+          alertify.success("JA");
+        }, function () {
+          alertify.success("NEIN");
+        });
+      //var modal_instance = $modal.open({
+      //  animation: true,
+      //  templateUrl: './views/registration_template.html',
+      //  controller: 'RegistrationModalCtrl',
+      //  resolve: {
+      //    fabFormOptions: function () {
+      //      return $scope.defaultFormOptions;
+      //    }
+      //  }
+      //});
+      //// to react on the buttons of the modal
+      //modal_instance.result.then(function (form_data_user) {
+      //  // ok function
+      //  socket.send(socket.create_json_string({
+      //    name: form_data_user.username,
+      //    password: form_data_user.password,
+      //    email: form_data_user.email
+      //  }, "register_user"));
+      //}, function () {
+      //  // dismiss function
+      //});
     };
 
 
