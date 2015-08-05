@@ -45,8 +45,8 @@ angular
     'ngMessages',
     'ngResource',
     'ngRoute',
-    'ngFabForm',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngMaterial'
   ])
   .run(function ($rootScope, $location, user, $modal) {
     $rootScope.left_game_route_through_modal = false;
@@ -68,7 +68,9 @@ angular
       }
     });
   })
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
+    $mdThemingProvider.theme('default');
+
     $locationProvider.html5Mode(true);
     $routeProvider
       .when('/main', {

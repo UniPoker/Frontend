@@ -346,3 +346,7 @@ a {
 .alertify .ajs-modal { /* overriding some code in alertify.js */
   z-index: 1000;
 }
+
+.md-button { /* overriding some code in angular-material */
+  text-transform: none;
+}

@@ -8,9 +8,7 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('LoginCtrl', function ($scope, ngFabForm, $location, socket, user, $modal) {
-
-    $scope.defaultFormOptions = ngFabForm.config;
+  .controller('LoginCtrl', function ($scope, $location, socket, user, $modal) {
 
     $scope.formData = {
       username: 'mustermann',
