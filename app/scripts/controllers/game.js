@@ -96,16 +96,6 @@ angular.module('pokerFrontendApp')
       });
     }
 
-    //function move_last_board_cards(card_id) {
-    //  $("#card_" + card_id + " > div").animate({
-    //    left: (BOARD_LEFT - ((CARD_WIDTH + 10) * (card_id - 2))) //-2 weil schon zwei handkarten liegen
-    //  }, 200, "easeOutQuad", function () {
-    //    $scope.$apply(function () {
-    //      $scope.flip_it(card_id)
-    //    });
-    //  });
-    //}
-
     $scope.add_hand_cards = function (cards) {
       for (var i = 0; i < cards.length; i++) {
         $scope.hand_cards.push({
@@ -144,6 +134,12 @@ angular.module('pokerFrontendApp')
       ).set('type', 'number').set('movable', false).setHeader('Setzen');
     };
 
+    $scope.$on("do_bet_response", function(event, data){
+      if(!socket.is_succesfull_response(data)){
+        alertify.error(data.message);
+      }
+    });
+
     $scope.do_fold = function () {
       alertify.confirm('Wirklich aussteigen?', function () {
         socket.send(socket.create_json_string({}, 'do_fold'));
@@ -162,6 +158,12 @@ angular.module('pokerFrontendApp')
       ).set('type', 'number').set('movable', false).setHeader('Erhöhen');
     };
 
+    $scope.$on("do_raise_response", function(event, data){
+      if(!socket.is_succesfull_response(data)){
+        alertify.error(data.message);
+      }
+    });
+
     $scope.do_check = function () {
       socket.send(socket.create_json_string({}, 'do_check'));
     };
@@ -175,6 +177,7 @@ angular.module('pokerFrontendApp')
         $scope.is_your_turn = body.your_turn;
         $scope.available_actions = body.available_methods;
         $scope.is_running = body.is_running;
+        $scope.call_value = body.call_value;
         set_all_players(all_players);
         if ($scope.is_your_turn) {
           alertify.message("Du bist am Zug");
