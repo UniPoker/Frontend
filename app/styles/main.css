@@ -343,6 +343,6 @@ a {
   color: black;
 }
 
-.alertify .ajs-modal { /* overriding some code in alertify.js */
-  z-index: 1000;
-}
+/*.alertify .ajs-modal { /!* overriding some code in alertify.js *!/*/
+  /*z-index: 1000;*/
+/*}*/

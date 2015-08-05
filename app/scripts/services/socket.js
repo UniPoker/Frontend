@@ -14,7 +14,7 @@ angular.module('pokerFrontendApp')
 
     var INTERFACE_NAME = "PokerInterface";
 
-    var websocket_url = 'ws://192.168.178.31:8080/events/';//  192.168.0.139:8080
+    var websocket_url = 'ws://192.168.0.139:8080/events/';//  192.168.0.139:8080
     var webSocket = new WebSocket(websocket_url);
 
     webSocket.onerror = function (event) {
