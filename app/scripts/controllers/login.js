@@ -27,33 +27,16 @@ angular.module('pokerFrontendApp')
         templateUrl: './views/registration_template.html',
         parent: angular.element(document.body),
         targetEvent: event,
-      })
-        .then(function (answer) {
-          alertify.success("JA");
-        }, function () {
-          alertify.success("NEIN");
-        });
-      //var modal_instance = $modal.open({
-      //  animation: true,
-      //  templateUrl: './views/registration_template.html',
-      //  controller: 'RegistrationModalCtrl',
-      //  resolve: {
-      //    fabFormOptions: function () {
-      //      return $scope.defaultFormOptions;
-      //    }
-      //  }
-      //});
-      //// to react on the buttons of the modal
-      //modal_instance.result.then(function (form_data_user) {
-      //  // ok function
-      //  socket.send(socket.create_json_string({
-      //    name: form_data_user.username,
-      //    password: form_data_user.password,
-      //    email: form_data_user.email
-      //  }, "register_user"));
-      //}, function () {
-      //  // dismiss function
-      //});
+      }).then(function (formData) {
+        console.log("OKAY SNED");
+        socket.send(socket.create_json_string({
+          name: formData.username,
+          password: formData.password,
+          email: formData.email
+        }, "register_user"));
+      }, function () {
+        //close function
+      });
     };
 
 

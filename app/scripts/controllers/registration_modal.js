@@ -8,7 +8,7 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('RegistrationModalCtrl', function ($scope) {
+  .controller('RegistrationModalCtrl', function ($scope, $mdDialog) {
     $scope.formData = {
       username: '',
       password: '',
@@ -16,10 +16,10 @@ angular.module('pokerFrontendApp')
     };
 
     $scope.ok = function () {
-      $modalInstance.close($scope.formData);
+      $mdDialog.hide($scope.formData);
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $mdDialog.cancel();
     };
   });

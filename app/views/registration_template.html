@@ -1,79 +1,51 @@
-<!--<div class="modal-content">-->
-  <!--<div class="modal-header">-->
-    <!--<button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span>-->
-    <!--</button>-->
-    <!--<h4 class="modal-title">Bitte vervollständige deine Daten</h4>-->
-  <!--</div>-->
-  <!--<div class="modal-body">-->
-    <!--&lt;!&ndash; begin body &ndash;&gt;-->
-    <!--<form role="form" name="customOptionsForm" ng-submit="ok()" ng-fab-form-options="defaultFormOptions">-->
-      <!--<div class="form-group">-->
-        <!--<label class="control-label">Email-->
-        <!--</label>-->
-        <!--<input type="text" class="form-control" placeholder="Email" ng-model="formData.email" required>-->
-      <!--</div>-->
-      <!--<div class="form-group">-->
-        <!--<label class="control-label">Username-->
-        <!--</label>-->
-        <!--<input type="text" class="form-control" placeholder="Username" ng-model="formData.username" required>-->
-      <!--</div>-->
-      <!--<div class="form-group">-->
-        <!--<label class="control-label">Passwort-->
-        <!--</label>-->
-        <!--<input type="password" class="form-control" placeholder="Passwort" ng-model="formData.password" required>-->
-      <!--</div>-->
-      <!--<div class="form-group">-->
-        <!--<label class="control-label">Passwort wiederholen-->
-        <!--</label>-->
-        <!--<input type="password" class="form-control" placeholder="Passwort wiederholen" ng-model="pwRepeat" ng-fab-match="formData.password" required>-->
-      <!--</div>-->
-      <!--<div class="text-right">-->
-        <!--<button type="button" class="btn btn-default" ng-click="cancel()">Schließen</button>-->
-        <!--<button type="submit" class="btn btn-primary">Registrieren</button>-->
-      <!--</div>-->
-    <!--</form>-->
-    <!--&lt;!&ndash; end body&ndash;&gt;-->
-  <!--</div>-->
-  <!--&lt;!&ndash;<div class="modal-footer">&ndash;&gt;-->
-  <!--&lt;!&ndash;<button type="submit" class="btn btn-default" ng-click="ok()">Schließen</button>&ndash;&gt;-->
-  <!--&lt;!&ndash;<button type="button" class="btn btn-primary" ng-click="cancel()">Registrieren</button>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--</div>-->
-<md-dialog aria-label="Registrieren">
-  <form>
+<md-dialog flex="50" aria-label="Registrieren">
+  <form name="registerForm" ng-submit="ok()">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>Registrieren</h2>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="answer('not applicable')">
-          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog">\f00d</md-icon>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="bower_components/material-design-icons/content/svg/design/ic_clear_24px.svg" aria-label="Close dialog"></md-icon>
         </md-button>
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <div>
-        <p>
-          The mango is a juicy stone fruit belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit. The majority of these species are found in nature as wild mangoes. They all belong to the flowering plant family Anacardiaceae. The mango is native to South and Southeast Asia, from where it has been distributed worldwide to become one of the most cultivated fruits in the tropics.
-        </p>
-        <img style="margin: auto; max-width: 100%;" alt="Lush mango tree" src="img/mangues.jpg">
-        <p>
-          The highest concentration of Mangifera genus is in the western part of Malesia (Sumatra, Java and Borneo) and in Burma and India. While other Mangifera species (e.g. horse mango, M. foetida) are also grown on a more localized basis, Mangifera indica&mdash;the "common mango" or "Indian mango"&mdash;is the only mango tree commonly cultivated in many tropical and subtropical regions.
-        </p>
-        <p>
-          It originated in Indian subcontinent (present day India and Pakistan) and Burma. It is the national fruit of India, Pakistan, and the Philippines, and the national tree of Bangladesh. In several cultures, its fruit and leaves are ritually used as floral decorations at weddings, public celebrations, and religious ceremonies.
-        </p>
-      </div>
+      <md-input-container>
+        <label>Email</label>
+        <input type="email" required name="email" ng-model="formData.email">
+
+        <div ng-messages="registerForm.email.$error">
+          <div ng-message="required">Muss ausgefüllt sein.</div>
+          <div ng-message="email">Bitte gültige Email eingeben.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Username</label>
+        <input required name="username" ng-model="formData.username">
+
+        <div ng-messages="registerForm.username.$error">
+          <div ng-message="required">Muss ausgefüllt sein.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Passwort</label>
+        <input required name="password" ng-model="formData.password" type="password">
+
+        <div ng-messages="registerForm.password.$error">
+          <div ng-message="required">Muss ausgefüllt sein.</div>
+        </div>
+      </md-input-container>
+
     </md-dialog-content>
     <div class="md-actions" layout="row">
-      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>
-        More on Wikipedia
-      </md-button>
       <span flex></span>
-      <md-button ng-click="answer('not useful')" class="md-primary">
-        Not Useful
+      <md-button ng-click="cancel()" class="md-primary">
+        Abbrechen
       </md-button>
-      <md-button ng-click="answer('useful')" class="md-primary">
-        Useful
+      <md-button class="md-primary">
+        Registrieren
       </md-button>
     </div>
   </form>

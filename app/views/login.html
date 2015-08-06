@@ -2,32 +2,14 @@
   <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6" style="margin-top:10%">
-      <!--<form role="form" name="customOptionsForm" ng-submit="submit()" ng-fab-form-options="defaultFormOptions">-->
-      <!--<div class="form-group">-->
-      <!--<label class="control-label">Email-->
-      <!--</label>-->
-      <!--<input type="text" class="form-control" placeholder="Username" ng-model="formData.username" required>-->
-      <!--</div>-->
-      <!--<div class="form-group">-->
-      <!--<label class="control-label">Passwort-->
-      <!--</label>-->
-      <!--<input type="password" class="form-control" id="inputPassword1" placeholder="Passwort" ng-model="formData.password" required>-->
-      <!--</div>-->
-      <!--<div class="col-lg-12 text_center">-->
-      <!--<button ng-disabled="disabled" type="button" ng-click="register_user(formData.password, formData.username)" class="btn btn-default">Registrieren</button>-->
-      <!--<md-button class="md-raised">Registrieren</md-button>-->
-      <!--<button ng-disabled="disabled" type="submit" class="btn btn-primary">Login</button>-->
-      <!--</div>-->
-      <!--</form>-->
 
       <form name="customOptionsForm" ng-submit="submit()">
         <md-input-container>
           <label>Username</label>
-          <input md-maxlength="30" required name="username" ng-model="formData.username">
+          <input required name="username" ng-model="formData.username">
 
           <div ng-messages="customOptionsForm.username.$error">
-            <div ng-message="required">This is required.</div>
-            <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+            <div ng-message="required">Muss ausgefüllt sein.</div>
           </div>
         </md-input-container>
         <md-input-container>
@@ -35,12 +17,14 @@
           <input required name="password" ng-model="formData.password" type="password">
 
           <div ng-messages="customOptionsForm.password.$error">
-            <div ng-message="required">This is required.</div>
+            <div ng-message="required">Muss ausgefüllt sein.</div>
           </div>
         </md-input-container>
         <section layout="row" layout-align="center">
-          <md-button ng-click="register_user(formData.password, formData.username)" type="button" class="md-raised">Registrieren</md-button>
-          <md-button class="md-raised md-primary">Login</md-button>
+          <md-button ng-disabled="disabled" ng-click="register_user()" type="button" class="md-raised">
+            Registrieren
+          </md-button>
+          <md-button ng-disabled="disabled" class="md-raised md-primary">Login</md-button>
         </section>
       </form>
 
