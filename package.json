@@ -2,7 +2,8 @@
   "name": "pokerfrontend",
   "version": "0.0.0",
   "dependencies": {
-    "connect-modrewrite": "^0.8.1"
+    "connect-modrewrite": "^0.8.1",
+    "grunt-ngdocs": "^0.2.8"
   },
   "repository": {},
   "devDependencies": {

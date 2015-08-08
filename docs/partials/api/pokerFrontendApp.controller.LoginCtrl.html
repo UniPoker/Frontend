@@ -1,0 +1,45 @@
+<h1><code ng:non-bindable="">LoginCtrl</code>
+<div><span class="hint">function in module <code ng:non-bindable="">pokerFrontendApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="pokerfrontendapp-controller-page pokerfrontendapp-controller-loginctrl-page"><h3 id="description_loginctrl">LoginCtrl</h3>
+<p>Controller of the pokerFrontendApp</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">LoginCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_login_user_response">login_user_response</h4>
+<p>Registered handler for the login_user_response.
+If is successful response the <a href="#/api/pokerFrontendApp.user">user</a> service gets logged in and its username set.
+On error response, a notification displays the error message.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_register_user_response">register_user_response</h4>
+<p>Registered handler for the register_user_response.
+A notification with the result will be displayed.</p>
+</div></div>
+</li>
+<li><h3 id="methods_register_user">register_user()</h3>
+<div class="register_user"><div class="register-user-page"><p>Initializes a modal screen to register a new user.
+On successful input the following attributes will be read:</p>
+<ul>
+<li>username</li>
+<li>password</li>
+<li>email
+Also register_user request is send to server and a handler needs to be registered.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_submit">submit()</h3>
+<div class="submit"><div class="submit-page"><p>Represents the submit function of the login form. It reads the inputs username and password.
+Also sends login_user request to server.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

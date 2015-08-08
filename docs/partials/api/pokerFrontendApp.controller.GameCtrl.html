@@ -1,0 +1,166 @@
+<h1><code ng:non-bindable="">GameCtrl</code>
+<div><span class="hint">function in module <code ng:non-bindable="">pokerFrontendApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="pokerfrontendapp-controller-page pokerfrontendapp-controller-gamectrl-page"><h3 id="description_gamectrl">GameCtrl</h3>
+<p>Controller of the pokerFrontendApp</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">GameCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_do_bet_response">do_bet_response</h4>
+<p>response handler of the do_bet method.
+if successful response, nothing happens, if error response, the message is displayed via notification.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_action_notification">action_notification</h4>
+<p>the handler for the action_notification push of the server.
+is send if any player does an action. it refreshes the</p>
+<ul>
+<li>list of all players</li>
+<li>the user money</li>
+<li>the pod value</li>
+<li>the is_your_turn boolean</li>
+<li>the available methods of the user</li>
+<li>the is_running boolean (game)</li>
+<li>the call_value (int)
+if it is the players turn, a notification is displayed.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_round_starts_notification">round_starts_notification</h4>
+<p>the notification from the server when a new round starts.
+sets all needed variables like:</p>
+<ul>
+<li>board_cards</li>
+<li>hand_cards</li>
+<li>the user_money</li>
+<li>the pod value</li>
+<li>is_your_turn boolean</li>
+<li>the available_actions of the user</li>
+<li>the call_value (int)</li>
+<li>is_running boolean (game)
+sets the hand_cards of the user.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_do_raise_response">do_raise_response</h4>
+<p>the response handler of the do_raise request.
+if error response, the message is displayed via notification.
+if success response, nothing happens.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_user_list_notification">user_list_notification</h4>
+<p>notification send from server, that a user joined/left the game.
+contains an array of ALL players.
+calls set_all_players()</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_request_start_round_response">request_start_round_response</h4>
+<p>response handler of request_start_round.
+displays the message of the response via notification.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><p>notification send from server giving new board_cards.
+contains a growing array, e.g. first time [3] cards, second time [4] cards, third time [5] cards.
+calls add_board_cards(cards) to add the new cards to view.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$watch">$watch()</h3>
+<div class="$watch"><div class="-watch-page"><h4 id="methods_$watch_is_running">is_running</h4>
+<p>registers a watch handler for the is_running boolean.
+if it changes to true, all start_new_game dialogs are closed,
+if it changes to false, a new one is opened.</p>
+</div></div>
+</li>
+<li><h3 id="methods_add_board_cards">add_board_cards(cards)</h3>
+<div class="add_board_cards"><div class="add-board-cards-page"><p>adds board cards to the bard_card array.
+if a card in the cards array is already in board_cards, it is not added.</p>
+</div><h5 id="methods_add_board_cards_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>cards</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="add-board-cards-page"><p>the board cards to be added</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_add_hand_cards">add_hand_cards(cards)</h3>
+<div class="add_hand_cards"><div class="add-hand-cards-page"><p>adds an array of cards to the hand_cards array.
+normally just two cards.</p>
+</div><h5 id="methods_add_hand_cards_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>cards</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="add-hand-cards-page"><p>the array of hand_cards to be added</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_do_bet">do_bet()</h3>
+<div class="do_bet"><div class="do-bet-page"><p>displays a prompt asking for the value to bet.
+after typing in, sends a request to the server, asking for do_bet method with given amount.</p>
+</div></div>
+</li>
+<li><h3 id="methods_do_call">do_call()</h3>
+<div class="do_call"><div class="do-call-page"><p>sends the do_call request to the server. No handlers needed for this.</p>
+</div></div>
+</li>
+<li><h3 id="methods_do_check">do_check()</h3>
+<div class="do_check"><div class="do-check-page"><p>sends the do_check request to the server.</p>
+</div></div>
+</li>
+<li><h3 id="methods_do_fold">do_fold()</h3>
+<div class="do_fold"><div class="do-fold-page"><p>display a confirm dialog to be sure that the user wants to fold.
+if he clicks ok a fold request is send to the server.</p>
+</div></div>
+</li>
+<li><h3 id="methods_do_raise">do_raise()</h3>
+<div class="do_raise"><div class="do-raise-page"><p>displays a prompt for the user to input the amount he wants to raise.
+if he enters a valid amount, the do_raise request is send to the server.
+a response handler is implemented.</p>
+</div></div>
+</li>
+<li><h3 id="methods_flip_board_cards">flip_board_cards(card_id)</h3>
+<div class="flip_board_cards"><div class="flip-board-cards-page"><p>sets flipped of card with given card_id = true</p>
+</div><h5 id="methods_flip_board_cards_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>card_id</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="flip-board-cards-page"><p>id of the flipping card</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_flip_hand_cards">flip_hand_cards(card_id)</h3>
+<div class="flip_hand_cards"><div class="flip-hand-cards-page"><p>flips a card in the hand cards array.</p>
+</div><h5 id="methods_flip_hand_cards_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>card_id</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="flip-hand-cards-page"><p>the index of the hand card</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_move_boardcards">move_boardcards(card_id)</h3>
+<div class="move_boardcards"><div class="move-boardcards-page"><p>recursively moving the boardcards to their needed position.</p>
+</div><h5 id="methods_move_boardcards_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>card_id</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="move-boardcards-page"><p>the index of the first card fixed to &#39;card_&#39; + index</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_move_two_handcards">move_two_handcards(card_id)</h3>
+<div class="move_two_handcards"><div class="move-two-handcards-page"><p>recursively moving the handcards to their needed position.</p>
+</div><h5 id="methods_move_two_handcards_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>card_id</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="move-two-handcards-page"><p>the index of the first card fixed to &#39;hand<em>card</em>&#39; + index</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_set_all_players">set_all_players(all_players)</h3>
+<div class="set_all_players"><div class="set-all-players-page"><p>helper function to set/refresh all players in the game.
+calls <a href="#/api/pokerFrontendApp.playersInGame#methods_set_all_players">set_all_players()</a> of the <a href="#/api/pokerFrontendApp.playersInGame">playerInGame</a> service.</p>
+</div><h5 id="methods_set_all_players_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>all_players</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="set-all-players-page"><p>the array of player to be added</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_start_round">start_round()</h3>
+<div class="start_round"><div class="start-round-page"><p>Sends a request to the server to start the round.
+Only possible if there are two or more players and no game running.</p>
+</div></div>
+</li>
+<li><h3 id="methods_to_main_route">to_main_route()</h3>
+<div class="to_main_route"><div class="to-main-route-page"><p>Changing the location to the main route. Can be used by buttons.</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_hand_top">HAND_TOP</h3>
+<div class="hand_top"><div class="hand-top-page"><p>CONSTANT of the top position of the hand cards.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

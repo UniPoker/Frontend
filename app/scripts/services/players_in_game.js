@@ -39,6 +39,15 @@ angular.module('pokerFrontendApp')
       return [];
     }
 
+    /**
+     * @ngdoc method
+     * @name set_all_players
+     * @methodOf pokerFrontendApp.playersInGame
+     * @description
+     * helper function to set/refresh all players in the game.
+     * calls set_all_players() of the playersInGame service.
+     * @param {Array} all_players the array of player to be added
+     */
     this.set_all_players = function (all_players) {
       this.all = [];
       for (var i = 0; i < all_players.length; i++) {
@@ -47,6 +56,10 @@ angular.module('pokerFrontendApp')
     };
 
     /**
+     * @ngdoc method
+     * @name get_index_of_player
+     * @methodOf pokerFrontendApp.playersInGame
+     * @description
      * returns the index of the player with the given name.
      * is -1 if not found
      * @param {String} player_name the name of the player to search for

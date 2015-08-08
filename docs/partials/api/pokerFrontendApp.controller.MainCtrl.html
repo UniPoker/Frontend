@@ -1,0 +1,58 @@
+<h1><code ng:non-bindable="">MainCtrl</code>
+<div><span class="hint">function in module <code ng:non-bindable="">pokerFrontendApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="pokerfrontendapp-controller-page pokerfrontendapp-controller-mainctrl-page"><h3 id="description_mainctrl">MainCtrl</h3>
+<p>Controller of the pokerFrontendApp</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">MainCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_list_rooms_response">list_rooms_response</h4>
+<p>Registered handler for list_rooms_response.
+If this handler is triggered, the rooms Array in the response is set to the local rooms variable.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_create_room_response">create_room_response</h4>
+<p>Registered handler for create_room_response.
+If this handler is triggered and the error code is 0, the new room is pushed into the local rooms variable and the view changes to game view.
+On error it displays a notification with the given error.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_join_room_response">join_room_response</h4>
+<p>Registered handler for join_room_response.
+If the error code is 0 the room_id of the user is set and the view changes to the game view.</p>
+</div></div>
+</li>
+<li><h3 id="methods_$on">$on()</h3>
+<div class="$on"><div class="-on-page"><h4 id="methods_$on_new_rooms_notification">new_rooms_notification</h4>
+<p>Notification send from server. If this notification gets triggered, all rooms get updated.</p>
+</div></div>
+</li>
+<li><h3 id="methods_add_room">add_room()</h3>
+<div class="add_room"><div class="add-room-page"><p>Requests create_room from the server. A handler needs to be registered separately.</p>
+</div></div>
+</li>
+<li><h3 id="methods_init">init()</h3>
+<div class="init"><div class="init-page"><p>Function that is called initially on load of main route.
+If the user is in a room, a leave_room request is send to the server.
+Anyway list_rooms request is send to server.</p>
+</div></div>
+</li>
+<li><h3 id="methods_join_room">join_room()</h3>
+<div class="join_room"><div class="join-room-page"><p>Requests join_room from the server. A handler needs to be registered separately.</p>
+</div></div>
+</li>
+<li><h3 id="methods_list_rooms">list_rooms()</h3>
+<div class="list_rooms"><div class="list-rooms-page"><p>Requests list_rooms from the server. A handler needs to be registered separately.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

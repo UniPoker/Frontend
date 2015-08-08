@@ -5,7 +5,7 @@
  * @name pokerFrontendApp.controller:TestRequestCtrl
  * @description
  * # TestRequestCtrl
- * Controller of the pokerFrontendApp
+ * For test purposes. Sends manually created requests to the server.
  */
 angular.module('pokerFrontendApp')
   .controller('TestRequestCtrl', function ($scope, $rootScope, socket, user) {

@@ -50,6 +50,8 @@ module.exports = function (grunt) {
     });
   });
 
+  grunt.loadNpmTasks('grunt-ngdocs');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -416,6 +418,11 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    //ng-docs
+    ngdocs: {
+      all: ['app/scripts/**/*.js']
     }
   });
 
@@ -471,5 +478,9 @@ module.exports = function (grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('docs', [
+    'ngdocs'
   ]);
 };
