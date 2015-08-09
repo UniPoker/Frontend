@@ -1,103 +1,20 @@
 <h1><code ng:non-bindable="">card</code>
-
-  <div><span class="hint">directive in module <code ng:non-bindable="">pokerFrontendApp</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">pokerFrontendApp</code>
 </span>
-  </div>
+</div>
 </h1>
 <div><h2 id="description">Description</h2>
-
-  <div class="description">
-    <div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><h3 id="description_card">
-      card</h3>
-
-      <p>A card directive that displays a svg image of the given color (color + value). Can be flipped with css
-        animation and comes in two different sizes, normal and mini.</p>
-    </div>
-  </div>
-  <h2 id="usage">Usage</h2>
-
-  <div class="usage">as element:<pre class="prettyprint linenums">&lt;card
+<div class="description"><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><h3 id="description_card">card</h3>
+<p>A card directive that displays a svg image of the given color (color + value). Can be flipped with css animation and comes in two different sizes, normal and mini.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;card
        flipped="{boolean}"
        color="{String}"
        sise="{String}"&gt;
 &lt;/card&gt;</pre>
-    <h4 id="usage_parameters">Parameters</h4>
-    <table class="variables-matrix table table-bordered table-striped">
-      <thead>
-      <tr>
-        <th>Param</th>
-        <th>Type</th>
-        <th>Details</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>flipped</td>
-        <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
-        <td>
-          <div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><p>indicates if the card is
-            flipped. Can be changed in real time and the card changes too.</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>color</td>
-        <td><a href="" class="label type-hint type-hint-string">String</a></td>
-        <td>
-          <div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><p>represents the value and
-            the color of the card. E.g. &#39;clubs_3&#39; represents a three of clubs.</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>sise</td>
-        <td><a href="" class="label type-hint type-hint-string">String</a></td>
-        <td>
-          <div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><p>represents the size of
-            the card. If &#39;mini&#39;, the card has smaller size and an automatic mouseover zoom.</p>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <h2 id="example">Example</h2>
-
-  <div class="example">
-    <div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><h4 id="example_source">
-      Source</h4>
-
-      <div source-edit="pokerFrontendApp" source-edit-deps="angular.js script.js" source-edit-html="index.html"
-           source-edit-css="" source-edit-js="script.js" source-edit-json="" source-edit-unit=""
-           source-edit-scenario=""></div>
-      <div class="tabbable">
-        <div class="tab-pane" title="index.html">
-          <pre class="prettyprint linenums" ng-set-text="index.html"
-               ng-html-wrap-loaded="pokerFrontendApp angular.js script.js"></pre>
-          <script type="text/ng-template" id="index.html">
-            <div ng-controller="SampleCtrl">
-              <card flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
-            </div>
-          </script>
-        </div>
-        <div class="tab-pane" title="script.js">
-          <pre class="prettyprint linenums" ng-set-text="script.js"></pre>
-          <script type="text/ng-template" id="script.js">
-            angular.module("pokerFrontendApp", ["pokerFrontendApp"])
-            .controller('SampleCtrl', function ($scope) {
-            $scope.card = {
-            flipped: true,
-            color: 'clubs',
-            value: '3'
-            };
-            });
-          </script>
-        </div>
-      </div>
-      <h4 id="example_demo">Demo</h4>
-
-      <div class="well doc-example-live animate-container" ng-embed-app="pokerFrontendApp" ng-set-html="index.html"
-           ng-eval-javascript="script.js"></div>
-    </div>
-  </div>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>flipped</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><p>indicates if the card is flipped. Can be changed in real time and the card changes too.</p>
+</div></td></tr><tr><td>color</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><p>represents the value and the color of the card. E.g. &#39;clubs_3&#39; represents a three of clubs.</p>
+</div></td></tr><tr><td>sise</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-card-page"><p>represents the size of the card. If &#39;mini&#39;, the card has smaller size and an automatic mouseover zoom.</p>
+</div></td></tr></tbody></table></div>
 </div>

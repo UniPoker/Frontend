@@ -4,31 +4,13 @@
 /**
  * @ngdoc directive
  * @name pokerFrontendApp.directive:cardZoom
+ * @requires api/pokerFrontendApp.directive:card
  * @restrict A
  * @element img
  * @description
  * # cardZoom
  * An extension of the card directive to zoom in on the card, if the size is 'mini'.
  * @param {String} mini If the size is 'mini' than a mouseenter/leave listener is registered to animate a zoom factor on the svg image of the card.
- * @example
- * <example module="pokerFrontendApp">
- *     <file name="index.html">
- *        <div ng-controller="SampleCtrl">
- *            {{card}}
- *          <card sise="mini" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
- *        </div>
- *     </file>
- *     <file name="script.js">
- *        angular.module("pokerFrontendApp", [])
- *                .controller('SampleCtrl', function ($scope) {
- *                    $scope.card = {
- *                      flipped: true,
- *                      color: 'clubs',
- *                      value: '3'
- *                    };
- *                });
- *     </file>
- * </example>
  */
 angular.module('pokerFrontendApp')
   .directive('cardZoom', function () {

@@ -3,8 +3,12 @@
 /**
  * @ngdoc directive
  * @name pokerFrontendApp.directive:chat
+ * @restrict E
  * @description
  * # chat
+ * creates a chat container with the given title. Can be set to an absolute overlay chat when overlay = true;
+ * @param {String} title The title of the chat.
+ * @param {boolean} overlay If set to true the chat becomes an absolute positioned overlay in the right corner.
  */
 angular.module('pokerFrontendApp')
   .directive('chat', function () {
@@ -19,6 +23,15 @@ angular.module('pokerFrontendApp')
         $scope.message = "";
         $scope.messages = [];
 
+        /**
+         * @ngdoc method
+         * @name send_message
+         * @methodOf pokerFrontendApp.directive:chat
+         * @description
+         * Sends a message to the server with the request 'send_message'. If the given message is zero, no request is send.
+         * A response handler needs to be set.
+         * @param {String} message The message to be send.
+         */
         $scope.send_message = function (message) {
           if(message == undefined || message == ""){
             return console.log("LEERE NACHRICHT ABGEFANGEN");
@@ -29,6 +42,16 @@ angular.module('pokerFrontendApp')
           socket.send(socket.create_json_string({message: message, room_id: room_id}, "send_message"));
         };
 
+        /**
+         * @ngdoc method
+         * @name $on
+         * @methodOf pokerFrontendApp.directive:chat
+         * @description
+         * # send_message_response
+         * Sends a message to the server with the request 'send_message'. If the given message is zero, no request is send.
+         * A response handler needs to be set.
+         * @param {String} message The message to be send.
+         */
         $scope.$on("send_message_response", function (event, data) {
           if (!socket.is_succesfull_response(data)) {
             alertify.warning("Nachricht konnte nicht gesendet werden.");

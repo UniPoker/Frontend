@@ -422,14 +422,6 @@ module.exports = function (grunt) {
 
     //ng-docs
     ngdocs: {
-      options: {
-        scripts: ['angular.js',
-          '../app/scripts/app.js',
-          '../app/scripts/directives/card.js'
-        ],
-        html5Mode: false,
-        inlinePartials: false
-      },
       all: ['app/scripts/**/*.js']
     }
   });
