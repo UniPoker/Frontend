@@ -5,7 +5,7 @@
  * @name pokerFrontendApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the pokerFrontendApp
+ * Old relict of the app. No longer used.
  */
 angular.module('pokerFrontendApp')
   .controller('AboutCtrl', function ($scope) {

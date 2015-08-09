@@ -19,7 +19,7 @@ NG_DOCS={
       "type": "function",
       "moduleName": "pokerFrontendApp",
       "shortDescription": "AboutCtrl",
-      "keywords": "aboutctrl api controller function pokerfrontendapp"
+      "keywords": "aboutctrl api app controller function longer pokerfrontendapp relict"
     },
     {
       "section": "api",
@@ -82,7 +82,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "pokerFrontendApp",
       "shortDescription": "card",
-      "keywords": "api card directive pokerfrontendapp"
+      "keywords": "$scope angular animation api automatic card changed changes clubs clubs_3 color controller css directive displays flipped function html image indicates js mini module mouseover ng-controller normal pokerfrontendapp real represents samplectrl script sise size sizes smaller svg three time true zoom"
     },
     {
       "section": "api",
@@ -91,7 +91,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "pokerFrontendApp",
       "shortDescription": "cardZoom",
-      "keywords": "api cardzoom directive pokerfrontendapp"
+      "keywords": "$scope angular animate api card cardzoom clubs color controller directive extension factor flipped function html image img js listener mini module mouseenter ng-controller pokerfrontendapp registered samplectrl script sise size svg true zoom"
     },
     {
       "section": "api",
@@ -164,6 +164,8 @@ NG_DOCS={
   "editExample": true,
   "startPage": "/api",
   "scripts": [
-    "angular.min.js"
+    "angular.min.js",
+    "app.js",
+    "card.js"
   ]
 };

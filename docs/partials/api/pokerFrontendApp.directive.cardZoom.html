@@ -5,10 +5,41 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-cardzoom-page"><h3 id="description_cardzoom">cardZoom</h3>
+<p>An extension of the card directive to zoom in on the card, if the size is &#39;mini&#39;.</p>
 </div></div>
 <h2 id="usage">Usage</h2>
-<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY card-zoom&gt;
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;img card-zoom
+     mini="{String}"&gt;
    ...
-&lt;/ANY&gt;</pre>
+&lt;/img&gt;</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>mini</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-cardzoom-page"><p>If the size is &#39;mini&#39; than a mouseenter/leave listener is registered to animate a zoom factor on the svg image of the card.</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="pokerfrontendapp-directive-page pokerfrontendapp-directive-cardzoom-page"><h4 id="example_source">Source</h4>
+<div source-edit="pokerFrontendApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-0" source-edit-css="" source-edit-js="script.js-1" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-0" ng-html-wrap-loaded="pokerFrontendApp angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-0">
+   <div ng-controller="SampleCtrl">
+       {{card}}
+     <card sise="mini" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
+   </div>
+</script>
 </div>
+<div class="tab-pane" title="script.js">
+<pre class="prettyprint linenums" ng-set-text="script.js-1"></pre>
+<script type="text/ng-template" id="script.js-1">
+   angular.module("pokerFrontendApp", [])
+           .controller('SampleCtrl', function ($scope) {
+               $scope.card = {
+                 flipped: true,
+                 color: 'clubs',
+                 value: '3'
+               };
+           });
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="pokerFrontendApp" ng-set-html="index.html-0" ng-eval-javascript="script.js-1"></div>
+</div></div>
 </div>
