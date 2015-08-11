@@ -10,7 +10,7 @@
  * Controller of the pokerFrontendApp
  */
 angular.module('pokerFrontendApp')
-  .controller('GameCtrl', function ($scope, $location, socket, user, playersInGame) {
+  .controller('GameCtrl', function ($scope, $location, $filter, socket, user, playersInGame) {
 
     /**
      * all players who are in the current game (is a service)
@@ -126,6 +126,21 @@ angular.module('pokerFrontendApp')
      */
     $scope.to_main_route = function () {
       $location.path("/main");
+    };
+
+    /**
+     * @ngdoc method
+     * @name format_call_value
+     * @methodOf pokerFrontendApp.controller:GameCtrl
+     * @description
+     * Formats the call_value with the right currency (from $locale). If no call_value is existend, it returns empty string.
+     */
+    $scope.format_call_value = function(){
+      if($scope.call_value != 0 && $scope.available_actions.call){
+        return $filter('currency')($scope.call_value, '€', 2);
+      }else{
+        return '';
+      }
     };
 
     /**

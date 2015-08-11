@@ -1,10 +1,7 @@
 <button ng-click="to_main_route()" class="btn btn-default">Zurück</button>
 
-{{user_money}}
-{{pod}}
-{{is_your_turn}}
-{{all_user}}
 <div class="position_relative">
+  <span style="font-size: 100%; position: absolute; left: 450px; top: 150px;" class="label label-warning">{{pod | currency}}</span>
   <div ng-repeat="card in board_cards">
     <card id="card_{{$index}}" flipped="{{card.flipped}}" color="{{card.color}}_{{card.value}}"></card>
   </div>
@@ -17,11 +14,11 @@
 <!--<button style="position: absolute; top: 250px; z-index: 10;" ng-click="add()">add</button>-->
 
 <div class="game_buttons">
+  <span style="font-size: 100%" class="label label-default">{{user_money | currency}}</span>
   <button ng-disabled="!available_actions.bet" ng-click="do_bet()" class="btn btn-primary">Bet</button>
   <button ng-disabled="!available_actions.fold" ng-click="do_fold()" class="btn btn-danger">Fold</button>
   <button ng-disabled="!available_actions.raise" ng-click="do_raise()" class="btn btn-warning">Raise</button>
-  <button ng-disabled="!available_actions.call" ng-click="do_call()" class="btn btn-success">Call {{(call_value != 0 &&
-    available_actions.call) ? '(' + call_value + ')' : ''}}
+  <button ng-disabled="!available_actions.call" ng-click="do_call()" class="btn btn-success">Call {{format_call_value()}}
   </button>
   <button ng-disabled="!available_actions.check" ng-click="do_check()" class="btn btn-info">Check</button>
 </div>

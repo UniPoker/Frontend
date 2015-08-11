@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/alertify-js/build/alertify.min.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/jquery.ui/ui/effect.js',
+      'bower_components/angular-i18n/angular-locale_de-de.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
