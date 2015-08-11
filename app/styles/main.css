@@ -329,8 +329,9 @@ a {
 }
 
 .game_buttons {
-  top: 500px;
-  position: relative;
+  top: 480px;
+  left: 250px;
+  position: absolute;
   text-align: center;
 }
 
@@ -346,3 +347,15 @@ a {
 /*.alertify .ajs-modal { /!* overriding some code in alertify.js *!/*/
   /*z-index: 1000;*/
 /*}*/
+
+.oval-background {
+  position: absolute;
+  left: 90px;
+  width: 700px;
+  height: 450px;
+  background-image: url("../images/poker-table-background.png");
+  -moz-border-radius: 220px / 220px;
+  -webkit-border-radius: 220px / 220px;
+  border-radius: 220px / 220px;
+  border: 5px solid #662200;
+}

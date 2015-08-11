@@ -85,13 +85,18 @@ angular.module('pokerFrontendApp')
      * The next four aligning with the card width and 10 px padding.
      * @type {number}
      */
-    var BOARD_LEFT = 530;
+    var BOARD_LEFT = 555;
+    /**
+     * CONSTANT of the top position of the board card.
+     * @type {number}
+     */
+    var BOARD_TOP = 10;
     /**
      * CONSTANT of the left position of the first hand card.
      * The next card aligning with the card width and 10 px padding.
      * @type {number}
      */
-    var HAND_LEFT = 580;
+    var HAND_LEFT = 450;
     /**
      * CONSTANT of the top position of the hand cards.
      * @type {number}
@@ -182,7 +187,8 @@ angular.module('pokerFrontendApp')
       }
 
       $("#card_" + card_id + " > div").animate({
-        left: (BOARD_LEFT - ((CARD_WIDTH + 10) * card_id))
+        left: (BOARD_LEFT - ((CARD_WIDTH + 10) * card_id)),
+        top: BOARD_TOP
       }, 200, "easeOutQuad", function () {
         $scope.$apply(function () {
           $scope.flip_board_cards(card_id)
