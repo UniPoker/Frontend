@@ -11,7 +11,7 @@ angular.module('pokerFrontendApp')
     return {
       templateUrl: '../views/nav_bar.html',
       restrict: 'E',
-      controller: function ($scope, user) {
+      controller: function ($scope, user, $location) {
         //$scope.user = user;
         $scope.routes = routeNavigation.routes;
         $scope.activeRoute = routeNavigation.activeRoute;
@@ -25,6 +25,12 @@ angular.module('pokerFrontendApp')
           } else {
             return !route.requireLogin;
           }
+        };
+        $scope.getRouteName = function () {
+          return routeNavigation.getActiveRoute();
+        };
+        $scope.clickRoute = function (path) {
+          $location.path(path);
         };
       }
     };

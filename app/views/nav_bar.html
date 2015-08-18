@@ -1,17 +1,12 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" ng-click="showMobileNav = !showMobileNav">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" ng-href="/">Poker</a>
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-list layout="row">
+      <md-list-item>
+        <span><!--{{getRouteName()}}-->Poker</span>
+      </md-list-item>
+      <md-list-item ng-show="show_route(route)" ng-click="clickRoute(route.path)" ng-repeat="route in routes">
+        <span>{{ route.name }}</span>
+      </md-list-item>
+    </md-list>
   </div>
-  <div class="collapse navbar-collapse" ng-class="{in: showMobileNav}">
-    <ul class="nav navbar-nav">
-      <li ng-repeat="route in routes" ng-class="{active: activeRoute(route)}">
-        <a ng-show="show_route(route)" ng-href="{{ route.path }}">{{ route.name }}</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+</md-toolbar>

@@ -24,6 +24,17 @@ angular.module('pokerFrontendApp')
       routes: routes,
       activeRoute: function (route) {
         return route.path === $location.path();
+      },
+      getActiveRoute: function () {
+        for(var i = 0; i < routes.length; i++){
+          var _path = $location.path();
+          if(routes[i].path === $location.path()){
+            if(_path === "/login"){
+              return "Poker";
+            }
+            return routes[i].name;
+          }
+        }
       }
     };
   });
